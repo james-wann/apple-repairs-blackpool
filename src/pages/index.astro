@@ -1,0 +1,122 @@
+---
+import Base from '../layouts/Base.astro';
+
+const title = 'Apple Repairs Blackpool | Independent Apple Specialists with OEM Parts';
+const description = 'Independent Apple specialists in Blackpool. Certified Apple technicians, 100% genuine Apple parts, onsite repairs across the Fylde Coast. Call 01253 445032.';
+---
+
+<Base title={title} description={description}>
+
+  <!-- HERO -->
+  <section class="page-hero mesh-bg">
+    <div class="container">
+      <span class="glass-pill" style="margin-bottom: 24px;"><span class="dot"></span> Apple Specialists. Open today.</span>
+      <h1 class="display-xl">Apple Repairs.</h1>
+      <p class="lead">Independent. Local. Certified.</p>
+      <div class="ctas">
+        <a href="tel:01253445032" class="btn btn-primary">Call 01253 445032</a>
+        <a href="tel:07873170729" class="btn btn-secondary">Call 07873 170729</a>
+      </div>
+    </div>
+    <div style="max-width: 1200px; margin: 64px auto 0; padding: 0 22px; position: relative; z-index: 2;">
+      <div
+        style="
+          width: 100%;
+          max-width: 980px;
+          aspect-ratio: 16 / 10;
+          margin: 0 auto;
+          border-radius: 20px;
+          background-image: linear-gradient(180deg, rgba(0,0,0,0) 60%, rgba(0,0,0,0.12) 100%), url('https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=1600&q=85&auto=format&fit=crop');
+          background-size: cover;
+          background-position: center;
+          box-shadow: var(--shadow-lg);
+        "
+        role="img"
+        aria-label="Mac on a desk"
+      ></div>
+    </div>
+  </section>
+
+  <!-- THREE PILLARS — photo-backed tiles -->
+  <section class="section-light">
+    <div class="grid-3">
+      <div
+        class="tile"
+        style="--tile-bg: url('https://images.unsplash.com/photo-1591488320449-011701bb6704?w=1200&q=85&auto=format&fit=crop');"
+      >
+        <div class="tile-bg" style="background-image: url('https://images.unsplash.com/photo-1591488320449-011701bb6704?w=1200&q=85&auto=format&fit=crop');"></div>
+        <div class="tile-content">
+          <span class="label">Apple Specialists</span>
+          <h3>Qualified Apple Engineer.</h3>
+          <p class="sub">We are Apple specialists.</p>
+          <div class="tile-ctas">
+            <a href="/apple-support/" class="arrow-link">We Only Deal With Apple</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="tile">
+        <div class="tile-bg" style="background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&q=85&auto=format&fit=crop');"></div>
+        <div class="tile-content">
+          <span class="label">OEM Parts</span>
+          <h3>100% Genuine Apple Parts.</h3>
+          <p class="sub">90 Days Warranty on Parts and Labour.</p>
+          <div class="tile-ctas">
+            <a href="/apple-support/" class="arrow-link">Get Your Mac back between 24 and 48 hours</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="tile light">
+        <div class="tile-bg" style="background-image: url('https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=1200&q=85&auto=format&fit=crop');"></div>
+        <div class="tile-content">
+          <span class="label">On The Fylde Coast</span>
+          <h3>Onsite Repairs.</h3>
+          <p class="sub">We Do Business Onsite Repairs.</p>
+          <div class="tile-ctas">
+            <a href="tel:01253445032" class="btn btn-primary">Call 01253 445032</a>
+            <a href="tel:01253445032" class="arrow-link">Call To Arrange</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OEM BAND -->
+  <section class="section-light section-pad-lg" style="text-align: center; position: relative; overflow: hidden;">
+    <div class="container">
+      <h2 class="display-1" style="margin-bottom: 18px;">Independent Apple Specialists with OEM Parts.</h2>
+      <span class="glass-pill">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--blue);"><polyline points="20 6 9 17 4 12"/></svg>
+        Certified Apple Technician
+      </span>
+    </div>
+  </section>
+
+  <!-- APPLE COMPUTER SALES -->
+  <section class="feature-card-wrap">
+    <div class="feature-card">
+      <div class="copy">
+        <span class="eyebrow">Apple Computer Sales</span>
+        <h2 class="display-2">New and used iMacs and MacBooks.</h2>
+        <p>Apple Repairs Blackpool Sell New, Used and Refurbished Apple Computers, we spec up the computers to your choice and budget.</p>
+        <p>The New Macs come with 12 months Apple Care and sealed Box. We also add a 90 day warranty with our used Macs.</p>
+        <p>Trade-ins are possible depending on year and condition.</p>
+        <div class="ctas">
+          <a href="tel:01253445032" class="btn btn-primary">Call to discuss</a>
+          <a href="/contact-us/" class="arrow-link">Contact us</a>
+        </div>
+      </div>
+      <div
+        class="visual"
+        style="background-image: linear-gradient(180deg, rgba(245,245,247,0) 60%, rgba(245,245,247,0.4) 100%), url('https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=1200&q=85&auto=format&fit=crop');"
+      >
+        <div class="glass-card">
+          <div class="title">Apple Repairs Blackpool</div>
+          <div class="text">New Apple Computers with Full Apple Care Warranty</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Base>

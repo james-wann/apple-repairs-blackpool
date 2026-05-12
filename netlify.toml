@@ -1,0 +1,48 @@
+# Netlify build configuration for Apple Repairs Blackpool
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# Legacy WordPress URLs to clean up
+[[redirects]]
+  from = "/2015/05/28/blackpool-has-its-own-independent-apple-repair-centre/"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/2015/05/14/hello-world/"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/category/uncategorized/"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/category/*"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/wp-login.php"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/wp-admin/*"
+  to = "/"
+  status = 301
+
+# Security headers
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"

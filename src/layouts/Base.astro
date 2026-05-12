@@ -1,0 +1,85 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+}
+
+const { title, description, canonical } = Astro.props;
+const siteUrl = 'https://applerepairsblackpool.co.uk';
+const canonicalUrl = canonical || new URL(Astro.url.pathname, siteUrl).toString();
+
+// LocalBusiness JSON-LD — sits on every page. Major SEO uplift vs the old site.
+const localBusinessSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  '@id': `${siteUrl}/#business`,
+  name: 'Apple Repairs Blackpool',
+  description: 'Independent Apple specialists in Blackpool and the Fylde Coast. Certified Apple technicians, 100% genuine Apple parts, onsite repairs.',
+  url: siteUrl,
+  telephone: ['+441253445032', '+447873170729'],
+  email: 'mailto:contact@applerepairsblackpool.co.uk',
+  priceRange: '££',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Cleveleys',
+    addressRegion: 'Lancashire',
+    postalCode: 'FY5 1RY',
+    addressCountry: 'GB'
+  },
+  areaServed: [
+    'Blackpool', 'Blackburn', 'Cleveleys', 'Fleetwood', 'Kirkham',
+    'Lancaster', 'Lytham St Annes', 'Morecambe', 'Preston', 'Poulton'
+  ].map(name => ({ '@type': 'City', name })),
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      opens: '09:00',
+      closes: '17:00'
+    }
+  ],
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Apple Repair Services',
+    itemListElement: [
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'iMac Repair and Upgrades' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Mac Mini Repair' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'MacBook Repair and Upgrades' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Storage and Data Recovery' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Onsite Apple Support' } }
+    ]
+  }
+};
+---
+
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="generator" content={Astro.generator} />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonicalUrl} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonicalUrl} />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="en_GB" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
+  <slot name="head" />
+</head>
+<body>
+  <Header />
+  <main>
+    <slot />
+  </main>
+  <Footer />
+</body>
+</html>
