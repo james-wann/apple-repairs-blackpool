@@ -76,6 +76,7 @@ const localBusinessSchema = {
   telephone: [SITE_INFO.phone.landline.e164, SITE_INFO.phone.mobile.e164],
   email: `mailto:${SITE_INFO.email}`,
   priceRange: '££',
+  foundingDate: String(SITE_INFO.foundedYear),
   address: {
     '@type': 'PostalAddress',
     addressLocality: SITE_INFO.address.locality,

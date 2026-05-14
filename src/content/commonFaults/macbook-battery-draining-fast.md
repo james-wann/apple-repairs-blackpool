@@ -24,4 +24,6 @@ Software causes are also common: a runaway process keeping the CPU busy, the scr
 
 Battery replacement with a genuine Apple cell. We calibrate the new battery to the system after installation so the percentage reading is accurate from day one. Most MacBook batteries are stocked or available next-day.
 
-Indicative cost: from £129 for MacBook Air, from £159 for MacBook Pro models. Includes the diagnostic, fitting, calibration, and a 90 day warranty on the new battery.
+## How we quote
+
+Phone us with your MacBook model and we'll give you a ballpark on the call. Apple cell pricing moves so we don't publish fixed prices, but battery replacement is one of the more predictable jobs we do. 90 day warranty on the new battery and labour.

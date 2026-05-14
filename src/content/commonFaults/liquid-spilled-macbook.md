@@ -26,4 +26,6 @@ Workshop diagnostic + ultrasonic cleaning + component-level repair where needed:
 
 The earlier we see the machine, the higher the success rate. A MacBook brought in within 24 hours of a clean water spill is often fully recoverable. A MacBook left switched on for hours, or left untouched for weeks, has the worst odds.
 
-Indicative cost: from £89 diagnostic + clean. Logic-board component replacement quoted separately if needed.
+## How we quote
+
+Liquid damage outcomes vary too widely for fixed pricing. The £75 diagnostic fee covers the initial assessment and ultrasonic clean. Any further board-level repair is quoted separately after we've seen the damage. If it's beyond economical repair, you pay only the diagnostic and we'll quote on data recovery instead.

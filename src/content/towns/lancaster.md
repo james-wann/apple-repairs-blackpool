@@ -6,4 +6,4 @@ summary: Mac and MacBook repair for Lancaster customers. Drop-off in Cleveleys o
 order: 80
 ---
 
-Lancaster customers travel a little to get to a real Apple specialist. We're worth it. Genuine parts only, certified technician, 90 day warranty on every repair.
+Lancaster customers travel a little to get to a real Apple specialist. We're worth it. Genuine parts only, experienced technician, 90 day warranty on every repair.

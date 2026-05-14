@@ -1,7 +1,6 @@
 ---
 title: Liquid damage repair
 description: Diagnostic, ultrasonic clean and board-level repair where feasible. Honest assessment if it's beyond economical repair.
-priceFrom: '£89'
 categories: [imac, macbook]
 order: 60
 standalone: true
@@ -22,11 +21,9 @@ If liquid has just been spilled on a Mac, force-shutdown immediately (hold power
 3. Microscope inspection for damaged components. Where damage is contained, we replace the specific failed components rather than the whole board.
 4. Reassembly, full diagnostic, load test before returning.
 
-## What it costs
+## How we quote
 
-- Initial liquid-damage diagnostic and ultrasonic clean: from £89
-- Component-level board repairs: quoted after diagnostic, typically from £159
-- If the damage is too widespread to be economical, we tell you that. You pay only the diagnostic fee.
+We don't publish a fixed price for liquid-damage repair. Outcomes vary wildly with what was spilled, how much, how long ago, and what state the board is in when we open it. The £75 diagnostic fee covers the assessment. We then provide a written quote for the cleaning and any component-level repair needed before any further work starts. If it's beyond economical repair, you pay only the diagnostic fee and we'll quote on data recovery from the failed machine instead.
 
 ## Realistic expectations
 

@@ -9,7 +9,7 @@ export const SITE_INFO = {
   name: 'Mac Repairs Blackpool',
   tagline: 'Apple Specialists.',
   description:
-    'Independent Mac and Apple repair specialists in Blackpool and the Fylde Coast. Certified Apple technicians, 100% genuine OEM parts, onsite repairs, 90 day warranty.',
+    'Independent Mac and Apple repair specialists in Blackpool and the Fylde Coast. Experienced Apple technicians, 100% genuine OEM parts, onsite repairs, 90 day warranty.',
   url: 'https://macrepairsblackpool.co.uk',
   email: 'contact@macrepairsblackpool.co.uk',
   phone: {
@@ -36,6 +36,7 @@ export const SITE_INFO = {
     sunday: 'closed'
   },
   diagnosticFee: '£75',
+  foundedYear: 2010,
   reviews: {
     rating: 5.0,
     count: 39,
@@ -53,10 +54,6 @@ export const SITE_INFO = {
     { name: 'Poulton',           slug: 'poulton' },
     { name: 'Preston',           slug: 'preston' }
   ],
-  social: {
-    facebook: 'https://www.facebook.com/',
-    x: 'https://x.com/'
-  }
 } as const;
 
 export type SiteInfo = typeof SITE_INFO;

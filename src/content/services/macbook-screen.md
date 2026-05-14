@@ -1,7 +1,6 @@
 ---
 title: MacBook screen replacement
 description: Cracked, flickering or dead MacBook displays. Both Air and Pro models, all sizes.
-priceFrom: '£189'
 categories: [macbook]
 order: 10
 standalone: true
@@ -13,9 +12,9 @@ A MacBook screen replacement covers the full display assembly: the LCD or Retina
 
 We carry parts for all current MacBook Air and MacBook Pro models, and source older parts within 24 to 48 hours.
 
-## What it costs
+## How we quote
 
-From £189 for standard MacBook Air assemblies. From £249 for Retina and Liquid Retina XDR Pro displays. Diagnostic is £75 if the fault isn't obvious, deducted from the repair cost.
+We don't publish a fixed price for MacBook screen replacement. Apple parts pricing moves, and the right outcome varies by model and what we find inside. Phone us with your model and we'll give you a ballpark on the call. If the fault isn't obvious, the £75 diagnostic fee covers a proper assessment, then we provide a written quote before any work starts. The £75 is deducted from any repair you proceed with.
 
 ## Turnaround
 

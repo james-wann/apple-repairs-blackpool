@@ -1,7 +1,6 @@
 ---
 title: Data recovery
 description: Failed drives, deleted files, liquid damage. Free initial assessment. Honest about what's recoverable and what isn't.
-priceFrom: '£99'
 categories: [imac, storage]
 order: 70
 standalone: true
@@ -22,12 +21,9 @@ standalone: true
 3. We recover files to your spec: everything we can, or specific folders you actually need.
 4. You take away a fresh external drive (or your replacement Mac, set up with the recovered data) and we securely dispose of any temporary working copies.
 
-## What it costs
+## How we quote
 
-- Free initial assessment to tell you the odds
-- Recovery from intact drives (logic-only failures): from £99
-- Recovery from failed SSDs on Apple silicon Macs: from £199, requires chip-level work
-- Recovery from severely damaged drives (head crashes, platter damage): we quote case-by-case; the most damaged drives go to a clean-room specialist partner
+Data recovery pricing varies enormously by what's wrong with the drive. A drive that mounts but has a corrupt filesystem is hours of work. A drive with physical damage that needs clean-room platter recovery is a different cost tier entirely. We do a free initial assessment to tell you which tier your job falls into, and you only commit to chargeable work once you've seen the quote. The most damaged drives go to a clean-room specialist partner whose costs we pass through transparently.
 
 ## What we're honest about
 

@@ -2,7 +2,7 @@
 name: Fleetwood
 postcode: FY7
 distance: 3 miles north of our Cleveleys studio
-summary: Apple repair and onsite support for Fleetwood. Same-day diagnostics, genuine parts, certified technician.
+summary: Apple repair and onsite support for Fleetwood. Same-day diagnostics, genuine parts, experienced technician.
 order: 40
 ---
 

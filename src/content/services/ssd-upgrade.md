@@ -1,7 +1,6 @@
 ---
 title: SSD upgrade
 description: The single biggest performance lift for an older Mac. Solid-state storage with the capacity you actually need.
-priceFrom: '£149'
 categories: [storage]
 order: 10
 standalone: true
@@ -28,16 +27,16 @@ For Apple silicon Macs (M1, M2, M3, M4) and MacBook Air/Pro 2018+, the SSD is so
 4. Install, boot from the new SSD, verify performance
 5. Optional: keep your old drive as an external for backup
 
-## What it costs
+## How we quote
 
-- SSD upgrade with cloning of existing data: from £149 (256GB SSD)
-- 512GB: from £179
-- 1TB: from £229
-- 2TB: from £329
-- Larger capacities quoted to spec
-
-Includes the new drive, fitting, data migration, and a 90 day warranty on parts and labour.
+SSD pricing moves with the market. NVMe storage costs have trended down for years but specific Apple-compatible parts vary in availability. We don't publish fixed prices because what you'd pay today isn't what you'd pay in six months. Phone us with your Mac model and the capacity you want, and we'll quote on the call or after a quick diagnostic. The £75 diagnostic fee applies if assessment is needed, deducted from the upgrade cost if you go ahead.
 
 ## Turnaround
 
 24 hours for most upgrades. Same-day for booked jobs where the drive is in stock.
+
+## What you get
+
+- The right SSD for your model and use case
+- Bit-for-bit cloning of your existing data (nothing lost)
+- 90 day warranty on parts and labour

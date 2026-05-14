@@ -27,4 +27,6 @@ Workshop diagnostic: open the MacBook, deep-clean the fans and intake mesh, repl
 
 If we find a failed fan, that's replaced with a genuine Apple unit before paste is reapplied.
 
-Indicative cost: from £79 for a full clean-and-repaste, plus any replacement parts.
+## How we quote
+
+Phone us with your MacBook model and we'll give you a ballpark on the call. If diagnostic is needed, the £75 fee covers it and is deducted from any repair you go ahead with. 90 day warranty on parts and labour.

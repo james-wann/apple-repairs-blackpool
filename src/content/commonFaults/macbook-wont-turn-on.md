@@ -27,4 +27,6 @@ Workshop diagnostic with a known-good charger, voltage probe on the logic board,
 
 Most "won't turn on" MacBooks are recoverable, often for less than the cost of a replacement. The exception is severe liquid damage caught late, where the corrosion has spread across the board.
 
-Indicative cost: from £75 diagnostic. Most logic-board repairs from £179 if economical to proceed.
+## How we quote
+
+We don't publish fixed prices for "won't turn on" repairs because the underlying cause varies enormously. The £75 diagnostic fee covers a proper assessment. If the repair is economical we provide a written quote before any work starts. If it isn't, you pay only the diagnostic and we'll quote on data recovery from the failed machine instead.

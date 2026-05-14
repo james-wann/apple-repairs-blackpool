@@ -27,4 +27,6 @@ For panel faults: replace the display assembly. Genuine Apple panels where avail
 
 For graphics-chip faults on older Intel MacBook Pros: assess economical reflow / reballing of the GPU.
 
-Indicative cost: cable replacement from £119. Full display assembly from £189. Logic-board work quoted separately after diagnostic.
+## How we quote
+
+Three different fix paths at three different price points, so we don't publish a fixed figure for "screen flickering". The £75 diagnostic fee covers proper assessment of which fault it is, then we provide a written quote before any work starts. The diagnostic fee is deducted from the repair cost if you proceed.

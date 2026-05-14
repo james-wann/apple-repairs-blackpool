@@ -4,63 +4,62 @@ import PageHero from '../components/PageHero.astro';
 import CtaBand from '../components/CtaBand.astro';
 import { SITE_INFO } from '../data/site.ts';
 
-const title = `Pricing | ${SITE_INFO.name}`;
-const description = `Indicative pricing for the most common Mac repairs in Blackpool. Diagnostic ${SITE_INFO.diagnosticFee}, deducted from any repair. Fixed written quote before work starts. 90 day warranty.`;
+const title = `Pricing & Quotes | ${SITE_INFO.name}`;
+const description = `How Mac Repairs Blackpool prices Apple repairs. Diagnostic ${SITE_INFO.diagnosticFee}, deducted from any repair. Fixed written quote before work starts. 90 day warranty on parts and labour.`;
 
-const priceList = [
+const services = [
   {
     category: 'MacBook',
     items: [
-      { service: 'Diagnostic',                        priceFrom: '£75' },
-      { service: 'Battery replacement (Air)',         priceFrom: '£129' },
-      { service: 'Battery replacement (Pro)',         priceFrom: '£159' },
-      { service: 'Screen replacement',                priceFrom: '£189' },
-      { service: 'Display cable replacement',         priceFrom: '£119' },
-      { service: 'Keyboard replacement',              priceFrom: '£199' },
-      { service: 'Fan replacement + thermal clean',   priceFrom: '£79' },
-      { service: 'Liquid damage diagnostic + clean',  priceFrom: '£89' },
-      { service: 'Logic board repair',                priceFrom: '£179' }
+      'Diagnostic',
+      'Battery replacement (Air and Pro, all generations)',
+      'Screen replacement',
+      'Display cable replacement',
+      'Keyboard replacement',
+      'Fan replacement + thermal clean',
+      'Liquid damage diagnostic + clean',
+      'Logic board repair'
     ]
   },
   {
     category: 'iMac',
     items: [
-      { service: 'Diagnostic',                        priceFrom: '£75' },
-      { service: 'Display cable replacement',         priceFrom: '£119' },
-      { service: 'Display panel replacement',         priceFrom: '£249' },
-      { service: 'HDD to SSD upgrade',                priceFrom: '£149' },
-      { service: 'RAM upgrade (where supported)',     priceFrom: '£79' },
-      { service: 'PSU replacement',                   priceFrom: '£139' },
-      { service: 'Logic board reflow / reball',       priceFrom: '£199' }
+      'Diagnostic',
+      'Display cable replacement',
+      'Display panel replacement',
+      'HDD to SSD upgrade',
+      'RAM upgrade (where supported)',
+      'PSU replacement',
+      'Logic board reflow / reball'
     ]
   },
   {
     category: 'Mac Mini',
     items: [
-      { service: 'Diagnostic',                        priceFrom: '£75' },
-      { service: 'HDD to SSD upgrade',                priceFrom: '£149' },
-      { service: 'RAM upgrade (where supported)',     priceFrom: '£79' },
-      { service: 'Fan + thermal clean',               priceFrom: '£79' },
-      { service: 'Logic board repair',                priceFrom: '£179' }
+      'Diagnostic',
+      'HDD to SSD upgrade',
+      'RAM upgrade (where supported)',
+      'Fan + thermal clean',
+      'Logic board repair'
     ]
   },
   {
     category: 'Storage & data',
     items: [
-      { service: 'macOS reinstall + migration',       priceFrom: '£59' },
-      { service: 'SSD upgrade (any Mac)',             priceFrom: '£149' },
-      { service: 'Data recovery (intact drive)',      priceFrom: '£99' },
-      { service: 'Data recovery (failed drive)',      priceFrom: 'Quoted after diagnostic' },
-      { service: 'OS password removal',               priceFrom: '£79' }
+      'macOS reinstall + migration',
+      'SSD upgrade (any Mac)',
+      'Data recovery (intact drive)',
+      'Data recovery (failed drive)',
+      'OS password removal'
     ]
   },
   {
     category: 'Onsite / Business',
     items: [
-      { service: 'Home call-out (Fylde area)',        priceFrom: '£89 + repair' },
-      { service: 'Business onsite (per hour)',        priceFrom: '£75' },
-      { service: 'New Mac setup + migration',         priceFrom: '£89' },
-      { service: 'Business support retainer',         priceFrom: 'Quoted to team size' }
+      'Home call-out (Fylde area)',
+      'Business onsite',
+      'New Mac setup + migration',
+      'Business support retainer'
     ]
   }
 ];
@@ -69,9 +68,9 @@ const priceList = [
 <Base title={title} description={description}>
 
   <PageHero
-    eyebrow="Pricing"
-    title="Indicative prices, honest quotes."
-    lead="Diagnostic £75, deducted from any repair. Written fixed quote before work starts. 90 day warranty on every job."
+    eyebrow="Pricing & Quotes"
+    title="How we price."
+    lead="No fixed price list. Honest written quote after a proper diagnostic. Diagnostic £75, deducted from any repair you go ahead with."
     ctas={[
       { href: SITE_INFO.phone.landline.href, label: `Call ${SITE_INFO.phone.landline.display}`, variant: 'primary' },
       { href: '/contact-us/', label: 'Get a quote', variant: 'secondary' }
@@ -80,37 +79,49 @@ const priceList = [
 
   <section class="content-section">
     <div class="container">
-      <p style="padding: 18px 22px; background: var(--bg-grey); border-radius: 14px; border-left: 4px solid var(--blue); margin-bottom: 36px;">
-        Prices below are <strong>indicative starting points</strong>. The diagnostic fee covers a proper bench assessment when the fault isn't obvious from a phone description. We give you a written fixed quote covering parts, labour and turnaround before any repair work starts.
-      </p>
 
-      {priceList.map(section => (
-        <div style="margin-bottom: 48px;">
-          <h2 class="display-3" style="margin-bottom: 18px;">{section.category}</h2>
-          <table style="width: 100%; border-collapse: collapse;">
-            <tbody>
-              {section.items.map(row => (
-                <tr style="border-bottom: 1px solid var(--line);">
-                  <td style="padding: 14px 0; font-size: 16px;">{row.service}</td>
-                  <td style="padding: 14px 0; font-size: 16px; font-weight: 600; color: var(--ink); text-align: right; font-family: var(--font-display); letter-spacing: -0.01em;">
-                    {row.priceFrom.startsWith('£') ? <>From {row.priceFrom}</> : row.priceFrom}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+      <h2 class="display-2">Why we don't publish a fixed price list</h2>
+      <p>Apple parts pricing moves. The cost of a MacBook battery, screen, or logic board today is not what it was three months ago, and what we'd charge to fit it depends on the specific model, the condition we find inside, and what the right outcome is for you. Publishing fixed numbers would be either misleading (out of date by the time you read it) or padded with margin to cover ourselves (unfair to customers whose repair turns out to be cheaper).</p>
+      <p>Instead, we give you a proper diagnostic, then a written quote covering parts, labour, and turnaround. You decide whether to proceed before any chargeable work starts.</p>
+
+      <h2 class="display-2" style="margin-top: 48px;">How a quote works</h2>
+      <ol style="margin: 16px 0 24px 24px; font-size: 17px; line-height: 1.6; color: var(--ink-soft);">
+        <li style="margin-bottom: 10px;"><strong style="color: var(--ink);">Talk to us first.</strong> Call {SITE_INFO.phone.landline.display}. We can often give you a ballpark over the phone for common faults, before you even bring the Mac in.</li>
+        <li style="margin-bottom: 10px;"><strong style="color: var(--ink);">Diagnostic.</strong> If the fault isn't obvious, we open the Mac and assess it properly. {SITE_INFO.diagnosticFee} fee. Deducted from the repair cost if you go ahead.</li>
+        <li style="margin-bottom: 10px;"><strong style="color: var(--ink);">Written quote.</strong> Parts, labour, turnaround. Itemised so you know what you're paying for.</li>
+        <li style="margin-bottom: 10px;"><strong style="color: var(--ink);">You decide.</strong> If you proceed, we book it in. If you don't, you pay the diagnostic fee and the Mac goes back to you in the condition it arrived in.</li>
+        <li><strong style="color: var(--ink);">No surprises mid-job.</strong> If we find something else during the repair, we stop and quote separately before continuing.</li>
+      </ol>
+
+      <h2 class="display-2" style="margin-top: 48px;">What's always fixed</h2>
+      <ul style="margin: 16px 0 24px 24px; font-size: 17px; line-height: 1.6; color: var(--ink-soft);">
+        <li><strong style="color: var(--ink);">{SITE_INFO.diagnosticFee} diagnostic fee</strong> when needed, always deducted from any repair you go ahead with</li>
+        <li><strong style="color: var(--ink);">90 day warranty</strong> on every repair, parts and labour</li>
+        <li><strong style="color: var(--ink);">Genuine Apple parts</strong> where they're available — no aftermarket compromises</li>
+        <li><strong style="color: var(--ink);">No work without your approval</strong> on the written quote</li>
+      </ul>
+
+      <h2 class="display-2" style="margin-top: 48px;">Services we quote on</h2>
+      <p>Every repair gets quoted individually. The categories below give you a sense of what's in scope.</p>
+
+      {services.map(section => (
+        <div style="margin-bottom: 32px;">
+          <h3 style="margin-top: 24px; margin-bottom: 10px;">{section.category}</h3>
+          <ul style="margin: 0 0 0 24px; font-size: 16px; line-height: 1.7; color: var(--ink-soft);">
+            {section.items.map(item => <li>{item}</li>)}
+          </ul>
         </div>
       ))}
 
-      <p style="margin-top: 36px; color: var(--ink-soft);">
-        Don't see what you need? <a href={SITE_INFO.phone.landline.href}>Call us</a> — we'll either quote on the phone or get you in for diagnostic.
+      <p style="margin-top: 36px; padding: 18px 22px; background: var(--bg-grey); border-radius: 14px;">
+        Don't see what you need? <a href={SITE_INFO.phone.landline.href}>Call us</a>. We'll either give you a sense of what's involved on the phone or book you in for diagnostic.
       </p>
     </div>
   </section>
 
   <CtaBand
-    title="Ready to book?"
-    lead="Workshop drop-off or onsite visit. Both available."
+    title="Ready for a quote?"
+    lead="Call to discuss your Mac. We'll be honest about what's involved before any money changes hands."
     ctas={[
       { href: SITE_INFO.phone.landline.href, label: `Call ${SITE_INFO.phone.landline.display}`, variant: 'primary' },
       { href: '/contact-us/', label: 'Get in touch', variant: 'secondary' }

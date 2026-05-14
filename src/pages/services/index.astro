@@ -32,11 +32,6 @@ const standaloneServices = (await getCollection('services'))
           <a href={`/services/${service.slug}/`} class="service-card" style="text-decoration: none; color: inherit;">
             <h3>{service.data.title}</h3>
             <p>{service.data.description}</p>
-            {service.data.priceFrom && (
-              <p style="margin-top: 8px; font-size: 14px;">
-                <strong style="color: var(--ink);">From {service.data.priceFrom}</strong>
-              </p>
-            )}
           </a>
         ))}
       </div>

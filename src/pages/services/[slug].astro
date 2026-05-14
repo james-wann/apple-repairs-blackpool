@@ -32,19 +32,7 @@ const serviceSchema = {
     '@type': 'LocalBusiness',
     '@id': `${SITE_INFO.url}/#business`
   },
-  areaServed: SITE_INFO.serviceAreas.map(area => ({ '@type': 'City', name: area.name })),
-  ...(service.data.priceFrom && {
-    offers: {
-      '@type': 'Offer',
-      priceCurrency: 'GBP',
-      price: service.data.priceFrom.replace(/[^0-9]/g, ''),
-      priceSpecification: {
-        '@type': 'PriceSpecification',
-        priceCurrency: 'GBP',
-        minPrice: service.data.priceFrom.replace(/[^0-9]/g, '')
-      }
-    }
-  })
+  areaServed: SITE_INFO.serviceAreas.map(area => ({ '@type': 'City', name: area.name }))
 };
 ---
 
@@ -52,7 +40,7 @@ const serviceSchema = {
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(serviceSchema)} />
 
   <PageHero
-    eyebrow={`Service${service.data.priceFrom ? ` · From ${service.data.priceFrom}` : ''}`}
+    eyebrow="Service"
     title={service.data.title}
     lead={service.data.description}
     ctas={[

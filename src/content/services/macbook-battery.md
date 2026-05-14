@@ -1,7 +1,6 @@
 ---
 title: MacBook battery replacement
 description: Genuine Apple battery cells. Restored full-day battery life on machines you thought were past it.
-priceFrom: '£129'
 categories: [macbook]
 order: 30
 standalone: true
@@ -13,13 +12,9 @@ Apple MacBook batteries are rated for around 1000 charge cycles. After 3 to 5 ye
 
 We use genuine Apple cells, properly calibrated to the system after installation so the percentage reading is accurate from day one.
 
-## What it costs
+## How we quote
 
-- MacBook Air (all generations including M1, M2, M3, M4): from £129
-- MacBook Pro 13": from £149
-- MacBook Pro 14" / 16" / 17": from £179
-
-These prices include the new cell, fitting, calibration, and a 90 day warranty.
+We don't publish a fixed price for MacBook battery replacement. Apple cell pricing varies by model and moves over time. Phone us with your MacBook model and we'll give you a ballpark on the call. If diagnostic is needed (e.g. to confirm it's actually the battery and not a software process keeping the system awake), the £75 fee covers it and is deducted from any repair you go ahead with.
 
 ## Turnaround
 
@@ -32,3 +27,9 @@ Hold Option and click the Apple menu → System Information → Power. Look at C
 ## When this isn't the right fix
 
 If the battery cycle count is low (under 300) but life is poor, the cause is more likely a software process keeping the system awake. Activity Monitor → Energy tab will show which. We diagnose this before fitting a new battery.
+
+## What you get
+
+- Genuine Apple cell
+- Calibration after installation
+- 90 day warranty on parts and labour

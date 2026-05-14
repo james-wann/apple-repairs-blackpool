@@ -26,4 +26,6 @@ Common causes in order of frequency:
 
 Workshop diagnostic with known-good charger and cable. Voltage measurements at the port and at the logic-board charging circuit. If it's a port issue, the port can be replaced. If it's a charging IC fault, that's component-level board repair.
 
-Indicative cost: diagnostic £75. Port replacement from £119. Charging IC repair from £159, quoted after diagnostic.
+## How we quote
+
+Two different fix paths (port vs charging IC) at different costs, so we don't publish a fixed figure for "won't charge". The £75 diagnostic fee covers a proper assessment, then we provide a written quote before any work starts. Diagnostic fee deducted from the repair cost if you proceed.

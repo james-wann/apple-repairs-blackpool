@@ -30,4 +30,6 @@ Workshop diagnostic. We open the iMac, test the panel directly, test the cable c
 
 iMac displays are bonded to the chassis with adhesive, so it's a delicate job, but we do them regularly.
 
-Indicative cost: cable replacement from £119. Panel replacement from £249 depending on model. GPU work quoted separately based on iMac generation.
+## How we quote
+
+Three different fix paths (cable, panel, GPU) at different costs, so we don't publish a fixed figure for "no display". The £75 diagnostic fee covers a proper assessment, then we provide a written quote before any work starts. The diagnostic fee is deducted from the repair cost if you proceed.

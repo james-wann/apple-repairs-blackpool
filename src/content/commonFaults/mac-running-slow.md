@@ -1,7 +1,7 @@
 ---
 title: Mac running slow
 symptom: Mac feels sluggish, apps take a long time to open, beach ball spins frequently, system feels unresponsive
-summary: A Mac that's slowed down over time is usually one of four things: a near-full or failing storage drive, insufficient RAM for what you're doing, a software process eating CPU, or thermal throttling from a dusty cooling system. We diagnose which and fix accordingly.
+summary: "A Mac that's slowed down over time is usually one of four things: a near-full or failing storage drive, insufficient RAM for what you're doing, a software process eating CPU, or thermal throttling from a dusty cooling system. We diagnose which and fix accordingly."
 affects: [All Macs]
 order: 70
 ---
@@ -32,4 +32,6 @@ Workshop diagnostic looks at all four causes:
 
 We give you a written summary of what's actually causing the slowdown and what would fix it. Often it's storage upgrade (SSD if not already, or larger SSD) plus a thermal clean. RAM upgrades where the model supports them.
 
-Indicative cost: diagnostic from £75. SSD upgrade from £149. Thermal clean from £79. RAM upgrade from £79 where supported.
+## How we quote
+
+The right fix for "slow Mac" varies (SSD upgrade, thermal clean, RAM upgrade, or sometimes just a software cleanup), so we don't publish a fixed figure. The £75 diagnostic fee covers proper assessment of what's actually causing it, then we provide a written quote covering parts and labour. Diagnostic fee deducted from any repair you go ahead with.

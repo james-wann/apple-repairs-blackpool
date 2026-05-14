@@ -5,15 +5,14 @@ import CtaBand from '../components/CtaBand.astro';
 import { SITE_INFO } from '../data/site.ts';
 
 const title = `About | ${SITE_INFO.name}`;
-const description = `Mac Repairs Blackpool is run by a certified Apple technician working from a Cleveleys studio. Independent, Apple-only, genuine parts, 90 day warranty on every repair.`;
+const description = `Mac Repairs Blackpool is run by an experienced Apple technician working from a Cleveleys studio. Independent, Apple-only, genuine parts, 90 day warranty on every repair.`;
 
 // Person schema — E-E-A-T signal for the engineer's expertise.
-// John is a placeholder name; James to replace with brother-in-law's actual name and credentials.
 const personSchema = {
   '@context': 'https://schema.org',
   '@type': 'Person',
-  name: 'John',
-  jobTitle: 'Certified Apple Technician',
+  name: 'John Wellby',
+  jobTitle: 'Experienced Apple Technician',
   worksFor: {
     '@type': 'LocalBusiness',
     '@id': `${SITE_INFO.url}/#business`
@@ -35,8 +34,8 @@ const personSchema = {
 
   <PageHero
     eyebrow="About"
-    title="Apple-only. Certified. Independent."
-    lead="Mac Repairs Blackpool is a one-engineer Apple repair workshop, operating from Cleveleys on the Fylde Coast."
+    title="Apple-only. Experienced. Independent."
+    lead="Mac Repairs Blackpool is a one-engineer Apple repair workshop, operating from Cleveleys on the Fylde Coast for over 15 years."
   />
 
   <section class="content-section">
@@ -46,8 +45,43 @@ const personSchema = {
       <p>We only work on Apple kit: iMac, MacBook Air, MacBook Pro, Mac Mini, Mac Pro. We don't do Windows PCs, and we don't take on phone work that distracts from doing Mac repair properly.</p>
 
       <h2 class="display-2" style="margin-top: 48px;">The engineer</h2>
-      <p>John is a certified Apple technician with experience across the Intel and Apple silicon Mac generations. Component-level board repair, data recovery, screen and keyboard work across every MacBook and iMac model from the 2000s through current.</p>
+
+      <div style="display: grid; grid-template-columns: auto 1fr; gap: 32px; align-items: center; margin: 24px 0 32px; max-width: 100%;">
+        <div style="
+          width: 180px;
+          height: 180px;
+          border-radius: 50%;
+          background: linear-gradient(135deg, #FFE5DD 0%, #FFD4C2 50%, #FFC4A8 100%);
+          overflow: hidden;
+          display: flex;
+          align-items: flex-end;
+          justify-content: center;
+          box-shadow: var(--shadow-md);
+          flex-shrink: 0;
+        ">
+          <img
+            src="/john.png"
+            alt="John, the Apple technician at Mac Repairs Blackpool"
+            style="width: 110%; height: auto; margin-bottom: -2%;"
+            loading="lazy"
+          />
+        </div>
+        <div>
+          <p style="margin: 0;"><strong style="color: var(--ink); font-size: 19px;">John Wellby</strong><br /><span style="color: var(--ink-soft);">Apple technician · Mac Repairs Blackpool</span></p>
+        </div>
+      </div>
+
+      <p>John is an experienced Apple technician who has worked across the Intel and Apple silicon Mac generations. Component-level board repair, data recovery, screen and keyboard work across every MacBook and iMac model from the 2000s through current.</p>
       <p>The bench has the diagnostic tools to do the job properly: oscilloscope and multimeter, microscope, hot-air station, ultrasonic cleaner for liquid-damage jobs, and the calibration kit needed for battery and display replacements on modern Apple silicon machines.</p>
+
+      <style>
+        @media (max-width: 600px) {
+          .content-section div[style*="grid-template-columns: auto 1fr"] {
+            grid-template-columns: 1fr !important;
+            text-align: center;
+          }
+        }
+      </style>
 
       <h2 class="display-2" style="margin-top: 48px;">How we work</h2>
       <p>You bring it in or call us out. We diagnose (the £75 fee covers properly opening the machine if the fault isn't obvious, and is deducted from any repair you go ahead with). We give a written quote with parts, labour and turnaround. No work starts until you've approved it.</p>
