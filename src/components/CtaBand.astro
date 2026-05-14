@@ -1,0 +1,37 @@
+---
+/**
+ * CtaBand — the bottom-of-page call-to-action strip.
+ * Heading, lead, two CTAs (one primary pill, one secondary).
+ * Used to close every interior page.
+ */
+
+interface Cta {
+  href: string;
+  label: string;
+  variant?: 'primary' | 'secondary';
+}
+
+interface Props {
+  title: string;
+  lead?: string;
+  ctas?: Cta[];
+}
+
+const { title, lead, ctas = [] } = Astro.props;
+---
+
+<section class="cta-band">
+  <div class="container">
+    <h2 class="display-2">{title}</h2>
+    {lead && <p class="lead">{lead}</p>}
+    {ctas.length > 0 && (
+      <div class="ctas">
+        {ctas.map(cta => (
+          <a href={cta.href} class={`btn ${cta.variant === 'secondary' ? 'btn-secondary' : 'btn-primary'}`}>
+            {cta.label}
+          </a>
+        ))}
+      </div>
+    )}
+  </div>
+</section>

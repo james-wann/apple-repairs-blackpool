@@ -1,4 +1,4 @@
-# Netlify build configuration for Apple Repairs Blackpool
+# Netlify build configuration for Mac Repairs Blackpool
 
 [build]
   command = "npm run build"

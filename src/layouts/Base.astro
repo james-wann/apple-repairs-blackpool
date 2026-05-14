@@ -1,6 +1,7 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { SITE_INFO } from '../data/site.ts';
 import '../styles/global.css';
 
 interface Props {
@@ -10,31 +11,79 @@ interface Props {
 }
 
 const { title, description, canonical } = Astro.props;
-const siteUrl = 'https://applerepairsblackpool.co.uk';
-const canonicalUrl = canonical || new URL(Astro.url.pathname, siteUrl).toString();
+const canonicalUrl = canonical || new URL(Astro.url.pathname, SITE_INFO.url).toString();
 
-// LocalBusiness JSON-LD — sits on every page. Major SEO uplift vs the old site.
+/**
+ * Humanise a URL slug into a breadcrumb label.
+ * Replaces dashes with spaces, title-cases, and handles known terms
+ * (MacBook, iMac, FAQ, SSD, etc) that need specific capitalisation.
+ */
+function humaniseSegment(segment: string): string {
+  const TERM_OVERRIDES: Record<string, string> = {
+    'macbook': 'MacBook',
+    'macbooks': 'MacBooks',
+    'imac': 'iMac',
+    'imacs': 'iMacs',
+    'mac': 'Mac',
+    'macos': 'macOS',
+    'faq': 'FAQ',
+    'ssd': 'SSD',
+    'hdd': 'HDD',
+    'ram': 'RAM',
+    'psu': 'PSU',
+    'gpu': 'GPU',
+    'oem': 'OEM',
+    'os': 'OS',
+    'vs': 'vs'
+  };
+  return segment
+    .split('-')
+    .map(word => TERM_OVERRIDES[word.toLowerCase()] ?? (word.charAt(0).toUpperCase() + word.slice(1)))
+    .join(' ');
+}
+
+const pathname = Astro.url.pathname;
+const segments = pathname.split('/').filter(Boolean);
+const breadcrumbItems = [
+  { name: 'Home', url: SITE_INFO.url + '/' },
+  ...segments.map((segment, idx) => {
+    const segmentPath = '/' + segments.slice(0, idx + 1).join('/') + '/';
+    return { name: humaniseSegment(segment), url: SITE_INFO.url + segmentPath };
+  })
+];
+
+const breadcrumbSchema = breadcrumbItems.length > 1
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: breadcrumbItems.map((item, idx) => ({
+        '@type': 'ListItem',
+        position: idx + 1,
+        name: item.name,
+        item: item.url
+      }))
+    }
+  : null;
+
+// LocalBusiness JSON-LD — sits on every page. Builds from SITE_INFO so NAP stays canonical.
 const localBusinessSchema = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
-  '@id': `${siteUrl}/#business`,
-  name: 'Apple Repairs Blackpool',
-  description: 'Independent Apple specialists in Blackpool and the Fylde Coast. Certified Apple technicians, 100% genuine Apple parts, onsite repairs.',
-  url: siteUrl,
-  telephone: ['+441253445032', '+447873170729'],
-  email: 'mailto:contact@applerepairsblackpool.co.uk',
+  '@id': `${SITE_INFO.url}/#business`,
+  name: SITE_INFO.name,
+  description: SITE_INFO.description,
+  url: SITE_INFO.url,
+  telephone: [SITE_INFO.phone.landline.e164, SITE_INFO.phone.mobile.e164],
+  email: `mailto:${SITE_INFO.email}`,
   priceRange: '££',
   address: {
     '@type': 'PostalAddress',
-    addressLocality: 'Cleveleys',
-    addressRegion: 'Lancashire',
-    postalCode: 'FY5 1RY',
-    addressCountry: 'GB'
+    addressLocality: SITE_INFO.address.locality,
+    addressRegion: SITE_INFO.address.region,
+    postalCode: SITE_INFO.address.postcode,
+    addressCountry: SITE_INFO.address.country
   },
-  areaServed: [
-    'Blackpool', 'Blackburn', 'Cleveleys', 'Fleetwood', 'Kirkham',
-    'Lancaster', 'Lytham St Annes', 'Morecambe', 'Preston', 'Poulton'
-  ].map(name => ({ '@type': 'City', name })),
+  areaServed: SITE_INFO.serviceAreas.map(area => ({ '@type': 'City', name: area.name })),
   openingHoursSpecification: [
     {
       '@type': 'OpeningHoursSpecification',
@@ -53,6 +102,13 @@ const localBusinessSchema = {
       { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Storage and Data Recovery' } },
       { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Onsite Apple Support' } }
     ]
+  },
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: SITE_INFO.reviews.rating.toFixed(1),
+    reviewCount: SITE_INFO.reviews.count,
+    bestRating: '5',
+    worstRating: '1'
   }
 };
 ---
@@ -79,6 +135,9 @@ const localBusinessSchema = {
     rel="stylesheet"
   />
   <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
+  {breadcrumbSchema && (
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  )}
   <slot name="head" />
 </head>
 <body>

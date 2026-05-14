@@ -1,0 +1,129 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { SITE_INFO } from '../data/site.ts';
+
+const title = `Mac Repairs Blackpool vs Apple Store | When each makes sense`;
+const description = `Honest comparison of getting a Mac repaired locally in Blackpool vs travelling to the nearest Apple Store (Manchester Trafford Centre or Liverpool One). Cost, turnaround, what's covered, what's not.`;
+
+// Article schema for comparison content. AEO loves citation-worthy comparisons.
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'Mac Repairs Blackpool vs Apple Store: when each makes sense',
+  description,
+  author: { '@type': 'Organization', name: SITE_INFO.name, url: SITE_INFO.url },
+  publisher: { '@type': 'Organization', name: SITE_INFO.name, url: SITE_INFO.url }
+};
+---
+
+<Base title={title} description={description}>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(articleSchema)} />
+
+  <PageHero
+    eyebrow="Comparison"
+    title="Independent vs Apple Store."
+    lead="The honest answer: each makes sense in different situations. Here's when to choose which."
+  />
+
+  <section class="content-section">
+    <div class="container">
+
+      <h2 class="display-2">Where you go matters</h2>
+      <p>There's no Apple Store in Blackpool. The nearest two are:</p>
+      <ul>
+        <li><strong>Apple Trafford Centre, Manchester</strong> — about 50 miles, 60-80 minutes each way depending on traffic</li>
+        <li><strong>Apple Liverpool One</strong> — about 55 miles, 75-90 minutes each way</li>
+      </ul>
+      <p>Both are great Apple Stores. Both involve a half-day round trip from the Fylde Coast. Both work on appointment basis only for the Genius Bar.</p>
+
+      <h2 class="display-2" style="margin-top: 48px;">When the Apple Store is the right choice</h2>
+      <ul>
+        <li><strong>Your Mac is still under warranty or AppleCare+.</strong> Use it. That's what you paid for.</li>
+        <li><strong>You have a known-issue repair program eligibility.</strong> Apple occasionally extends free repair programs for specific defects (battery service, keyboard service, display cables). The Apple Store handles these at no charge if your Mac qualifies.</li>
+        <li><strong>You want a brand-new replacement under their swap program</strong> and you've got the spend for it.</li>
+        <li><strong>You're already in Manchester or Liverpool that day anyway.</strong> No travel cost.</li>
+      </ul>
+
+      <h2 class="display-2" style="margin-top: 48px;">When we're the right choice</h2>
+      <ul>
+        <li><strong>Out of warranty, out of AppleCare+.</strong> Apple's out-of-warranty pricing is high. A MacBook screen replacement at the Apple Store can be £400-£600+. Ours from £189.</li>
+        <li><strong>Older Macs Apple won't service anymore.</strong> Apple categorises older Macs as "vintage" or "obsolete" and stops accepting them for repair. We don't.</li>
+        <li><strong>Component-level board repair.</strong> Apple swaps boards; we can often repair the specific failed component on the board, which is dramatically cheaper.</li>
+        <li><strong>Data recovery from a failed Mac.</strong> Apple's process can wipe data as part of board swap. We prioritise recovery first.</li>
+        <li><strong>You can't easily get to Manchester or Liverpool.</strong> Half-day each way, plus the appointment window.</li>
+        <li><strong>Onsite repair at home or office.</strong> Apple doesn't come to you. We do.</li>
+        <li><strong>Honest second opinion.</strong> If the Apple Store has quoted you a number that feels high, we'll give you ours.</li>
+      </ul>
+
+      <h2 class="display-2" style="margin-top: 48px;">What's the same</h2>
+      <ul>
+        <li>Genuine Apple parts where available</li>
+        <li>Certified technicians</li>
+        <li>Warranty on the repair (Apple's is 90 days; ours is also 90 days)</li>
+      </ul>
+
+      <h2 class="display-2" style="margin-top: 48px;">Side by side</h2>
+      <table style="width: 100%; border-collapse: collapse; margin-top: 18px;">
+        <thead>
+          <tr style="border-bottom: 2px solid var(--ink); text-align: left;">
+            <th style="padding: 12px 0; font-family: var(--font-display);">&nbsp;</th>
+            <th style="padding: 12px 12px; font-family: var(--font-display);">{SITE_INFO.name}</th>
+            <th style="padding: 12px 12px; font-family: var(--font-display);">Apple Store (Trafford / Liverpool)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid var(--line);">
+            <td style="padding: 14px 0; font-weight: 600;">Distance from Blackpool</td>
+            <td style="padding: 14px 12px;">5-25 miles (Fylde and Lancashire)</td>
+            <td style="padding: 14px 12px;">50-55 miles</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--line);">
+            <td style="padding: 14px 0; font-weight: 600;">Out-of-warranty cost</td>
+            <td style="padding: 14px 12px;">Independent pricing, typically 40-60% of Apple's</td>
+            <td style="padding: 14px 12px;">Apple's flat-rate out-of-warranty pricing</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--line);">
+            <td style="padding: 14px 0; font-weight: 600;">Older Mac (vintage / obsolete)</td>
+            <td style="padding: 14px 12px;">Yes, we'll diagnose and repair where viable</td>
+            <td style="padding: 14px 12px;">No, refused for service</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--line);">
+            <td style="padding: 14px 0; font-weight: 600;">Onsite / home call-out</td>
+            <td style="padding: 14px 12px;">Yes</td>
+            <td style="padding: 14px 12px;">No</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--line);">
+            <td style="padding: 14px 0; font-weight: 600;">Component-level board repair</td>
+            <td style="padding: 14px 12px;">Yes</td>
+            <td style="padding: 14px 12px;">No (board swap only)</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--line);">
+            <td style="padding: 14px 0; font-weight: 600;">Warranty on the repair</td>
+            <td style="padding: 14px 12px;">90 days, parts and labour</td>
+            <td style="padding: 14px 12px;">90 days</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--line);">
+            <td style="padding: 14px 0; font-weight: 600;">In-warranty / AppleCare+ work</td>
+            <td style="padding: 14px 12px;">No (Apple won't honour their own warranty through a third party)</td>
+            <td style="padding: 14px 12px;">Yes, that's what it's for</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2 class="display-2" style="margin-top: 48px;">The short version</h2>
+      <p>In warranty → Apple Store. Out of warranty → us. Older Mac → us. Half-day round-trip a problem → us. Want the genuine Apple high-street experience and the budget for it → Apple Store.</p>
+    </div>
+  </section>
+
+  <CtaBand
+    title="Not sure which is right?"
+    lead="Tell us the symptoms, we'll be honest if the Apple Store is your better bet."
+    ctas={[
+      { href: SITE_INFO.phone.landline.href, label: `Call ${SITE_INFO.phone.landline.display}`, variant: 'primary' },
+      { href: '/contact-us/', label: 'Get in touch', variant: 'secondary' }
+    ]}
+  />
+
+</Base>

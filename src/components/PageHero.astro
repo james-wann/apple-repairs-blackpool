@@ -1,0 +1,41 @@
+---
+/**
+ * PageHero — the standard interior-page hero.
+ * Used on every page except the homepage (which has a richer hero with product imagery).
+ * Single seam for the hero pattern: glass-pill eyebrow + big title + lead + optional CTAs.
+ */
+
+interface Cta {
+  href: string;
+  label: string;
+  variant?: 'primary' | 'secondary';
+}
+
+interface Props {
+  eyebrow: string;
+  title: string;
+  lead?: string;
+  ctas?: Cta[];
+  size?: 'xl' | 'lg';
+}
+
+const { eyebrow, title, lead, ctas = [], size = 'lg' } = Astro.props;
+const titleClass = size === 'xl' ? 'display-xl' : 'display-1';
+---
+
+<section class="page-hero mesh-bg">
+  <div class="container">
+    <span class="glass-pill" style="margin-bottom: 24px;">{eyebrow}</span>
+    <h1 class={titleClass}>{title}</h1>
+    {lead && <p class="lead">{lead}</p>}
+    {ctas.length > 0 && (
+      <div class="ctas">
+        {ctas.map(cta => (
+          <a href={cta.href} class={`btn ${cta.variant === 'secondary' ? 'btn-secondary' : 'btn-primary'}`}>
+            {cta.label}
+          </a>
+        ))}
+      </div>
+    )}
+  </div>
+</section>

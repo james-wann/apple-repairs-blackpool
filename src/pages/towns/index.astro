@@ -1,0 +1,47 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { getCollection } from 'astro:content';
+import { SITE_INFO } from '../../data/site.ts';
+
+const towns = (await getCollection('towns')).sort((a, b) => a.data.order - b.data.order);
+
+const title = `Service Areas | Apple Repair across the Fylde Coast | ${SITE_INFO.name}`;
+const description = `Apple repair across Blackpool, Cleveleys, Lytham St Annes, Fleetwood, Poulton, Kirkham, Preston, Lancaster, Morecambe and Blackburn. Independent Apple specialist.`;
+---
+
+<Base title={title} description={description}>
+
+  <PageHero
+    eyebrow="Service Areas"
+    title="Apple repair across the Fylde Coast."
+    lead="Ten towns covered. Workshop drop-off in Cleveleys, or onsite visits arranged."
+  />
+
+  <section class="content-section">
+    <div class="container">
+      <div class="service-grid">
+        {towns.map(town => (
+          <a href={`/towns/${town.slug}/`} class="service-card" style="text-decoration: none; color: inherit;">
+            <h3>{town.data.name}</h3>
+            <p>{town.data.summary}</p>
+            <p style="margin-top: 8px; font-size: 14px; color: var(--ink-mute);">
+              {town.data.postcode} · {town.data.distance}
+            </p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CtaBand
+    title="Find your town."
+    lead="Don't see your area? Call us anyway. We cover the wider Fylde and Lancashire for onsite visits."
+    ctas={[
+      { href: SITE_INFO.phone.landline.href, label: `Call ${SITE_INFO.phone.landline.display}`, variant: 'primary' },
+      { href: '/contact-us/', label: 'Get in touch', variant: 'secondary' }
+    ]}
+  />
+
+</Base>

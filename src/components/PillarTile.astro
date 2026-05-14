@@ -1,0 +1,47 @@
+---
+/**
+ * PillarTile — the homepage three-pillar tiles.
+ * Text on a clean tile background, photo hero anchored at bottom.
+ * Variant controls light vs dark treatment (Apple grid rhythm).
+ */
+
+interface Cta {
+  href: string;
+  label: string;
+  variant?: 'primary' | 'secondary' | 'arrow';
+}
+
+interface Props {
+  label: string;
+  title: string;
+  subtitle: string;
+  photoUrl: string;
+  variant?: 'light' | 'dark';
+  ctas?: Cta[];
+}
+
+const { label, title, subtitle, photoUrl, variant = 'light', ctas = [] } = Astro.props;
+const tileClass = variant === 'dark' ? 'tile dark' : 'tile';
+---
+
+<div class={tileClass}>
+  <div class="tile-content">
+    <span class="label">{label}</span>
+    <h3>{title}</h3>
+    <p class="sub">{subtitle}</p>
+    {ctas.length > 0 && (
+      <div class="tile-ctas">
+        {ctas.map(cta => {
+          if (cta.variant === 'primary') {
+            return <a href={cta.href} class="btn btn-primary">{cta.label}</a>;
+          }
+          if (cta.variant === 'secondary') {
+            return <a href={cta.href} class="btn btn-secondary">{cta.label}</a>;
+          }
+          return <a href={cta.href} class="arrow-link">{cta.label}</a>;
+        })}
+      </div>
+    )}
+  </div>
+  <div class="tile-photo" style={`background-image: url('${photoUrl}');`}></div>
+</div>

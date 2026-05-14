@@ -1,6 +1,8 @@
-# Apple Repairs Blackpool
+# Mac Repairs Blackpool
 
-Website for Apple Repairs Blackpool. Independent Apple specialists serving the Fylde Coast.
+Website for Mac Repairs Blackpool. Independent Apple specialist serving Blackpool and the Fylde Coast.
+
+The brand "Mac Repairs Blackpool" is a second identity for the same workshop that operates as Apple Repairs Blackpool. Same engineer, same phone numbers, same Cleveleys studio. This site is the SEO+AEO-focused frontend; the legacy WordPress site at applerepairsblackpool.co.uk is untouched.
 
 Built with Astro. Deployed on Netlify. Maintained via Claude.
 
@@ -21,51 +23,55 @@ npm run build
 
 Output goes to `/dist`.
 
+## Tests
+
+```bash
+npm test
+```
+
+89 Playwright tests covering lead-generation behaviour and discovery integrity.
+See `tests/conversion.spec.ts` and `tests/discovery.spec.ts`.
+
 ## Project structure
 
 ```
 src/
+  data/site.ts             SITE_INFO — single source of truth for NAP, hours, services
   layouts/Base.astro       Shared HTML shell, head metadata, LocalBusiness schema
   components/
     Header.astro            Top utility bar + sticky nav
-    Footer.astro            Footer with social row and copyright
+    Footer.astro            Footer with social row, copyright, service areas
+    PageHero.astro          Interior-page hero (eyebrow + title + lead + CTAs)
+    CtaBand.astro           Bottom-of-page call-to-action strip
+    PillarTile.astro        Homepage three-pillar tile
+    ServiceGrid.astro       Renders services from the content collection by category
+  content/
+    config.ts               Astro content collection schemas
+    services/*.md           One markdown file per Service
+    towns/*.md              One markdown file per service-area Town
   pages/
-    index.astro             Homepage
+    index.astro
     imac-repair-upgrades.astro
     mac-mini.astro
     macbook-all-models-repairs-upgrades.astro
     storage.astro
     apple-support.astro
     contact-us.astro
-  styles/global.css         Design system (v5 visual language)
+    towns/index.astro       Service areas index
+    towns/[slug].astro      Dynamic town landing pages
+  styles/global.css         Design system
 public/
   robots.txt
   favicon.svg
 astro.config.mjs            Astro config, sitemap integration, trailing slash policy
 netlify.toml                Netlify build config + redirects + security headers
+playwright.config.ts        Test config
+CONTEXT.md                  Domain vocabulary
 ```
 
 ## Deployment
 
 Pushing to the `main` branch triggers an auto-deploy on Netlify. No manual steps.
-
-The `netlify.toml` file pins the build command, publish directory, redirects from
-legacy WordPress URLs, and adds security headers.
-
-## URLs preserved from the old WordPress site
-
-These URLs are kept exactly to maintain SEO ranking:
-
-- `/` (homepage)
-- `/imac-repair-upgrades/`
-- `/mac-mini/`
-- `/macbook-all-models-repairs-upgrades/`
-- `/storage/`
-- `/apple-support/`
-- `/contact-us/`
-
-Legacy WordPress URLs (old blog posts, `/wp-admin/`, etc.) are 301-redirected to `/`
-via `netlify.toml`.
 
 ## How to make changes
 
@@ -74,22 +80,15 @@ Open Claude. Point it at this repo folder. Ask it to do whatever you need:
 - "Update the diagnostic fee to £85 on every page"
 - "Add a new service page for iPhone screen repair"
 - "Change the hero photo to this one" (then attach the file)
-- "Add a Lancaster town page following the same pattern"
+- "Add an FAQ page about MacBook batteries"
 
 Claude edits the relevant files. Commit and push. Netlify deploys in ~30 seconds.
 
 ## Notes for whoever takes this over
 
-- All keyword-bearing content was preserved verbatim from the original WordPress site
-  where it ranked. Per-service descriptions on the interior pages were written fresh
-  for the rebuild and approved by the owner.
-- LocalBusiness schema lives in `src/layouts/Base.astro`. Update phone, hours, or
-  address there and it propagates site-wide.
-- Hero and tile photography is currently from Unsplash placeholder URLs. Swap for the
-  business's own photography by changing the `background-image` URLs in
-  `src/pages/index.astro`.
-- The contact form uses Netlify Forms. Submissions appear in the Netlify dashboard
-  under Forms. Free tier covers 100 submissions per month.
-- Phone numbers, address, hours, and the £75 diagnostic fee are sourced from the
-  existing live site. Update in `Base.astro` (schema) and `contact-us.astro` if any
-  of those change.
+- Phone numbers, address, hours, diagnostic fee, service areas all live in `src/data/site.ts`. Change them there once and the entire site updates.
+- LocalBusiness schema is auto-generated from `SITE_INFO` in `src/layouts/Base.astro`.
+- Hero and tile photography is currently Unsplash placeholders. Swap for real workshop photography by changing the `background-image` URLs in `src/pages/index.astro` (or the town `[slug].astro` template for town pages).
+- The contact form uses Netlify Forms. Submissions appear in Netlify → Forms. Free tier covers 100 submissions per month.
+- Services are markdown files in `src/content/services/`. Each has frontmatter declaring which `categories` (page types) it appears on. To add a service, drop a new markdown file in.
+- Towns are markdown files in `src/content/towns/`. Each generates a landing page at `/towns/[slug]/`. To add a town, drop a new markdown file in.

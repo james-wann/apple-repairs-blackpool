@@ -1,0 +1,36 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+
+/**
+ * ServiceGrid — renders the set of services for a given category as cards.
+ * Data comes from the services content collection. Adding a service is
+ * one markdown file with the right category tag.
+ */
+
+type ServiceCategory = 'imac' | 'mac-mini' | 'macbook' | 'storage' | 'support';
+
+interface Props {
+  category: ServiceCategory;
+}
+
+const { category } = Astro.props;
+
+const allServices = await getCollection('services');
+const services = allServices
+  .filter((service: CollectionEntry<'services'>) => service.data.categories.includes(category))
+  .sort((a, b) => a.data.order - b.data.order);
+---
+
+<div class="service-grid">
+  {services.map(service => (
+    <div class="service-card">
+      <h3>{service.data.title}</h3>
+      <p>{service.data.description}</p>
+      {service.data.priceFrom && (
+        <p style="margin-top: 8px; font-size: 14px;">
+          <strong style="color: var(--ink);">From {service.data.priceFrom}</strong>
+        </p>
+      )}
+    </div>
+  ))}
+</div>

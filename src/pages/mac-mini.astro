@@ -1,67 +1,42 @@
 ---
 import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import CtaBand from '../components/CtaBand.astro';
+import ServiceGrid from '../components/ServiceGrid.astro';
+import { SITE_INFO } from '../data/site.ts';
 
-const title = 'Mac Mini Repair | Apple Repairs Blackpool';
-const description = 'Mac Mini repair in Blackpool. Common faults diagnosed and repaired by a certified Apple technician. Genuine parts, 90 day warranty.';
+const title = `Mac Mini Repair | ${SITE_INFO.name}`;
+const description = `Mac Mini repair in Blackpool. Common faults diagnosed and repaired by a certified Apple technician. Genuine parts, 90 day warranty.`;
 ---
 
 <Base title={title} description={description}>
 
-  <section class="page-hero mesh-bg">
-    <div class="container">
-      <span class="glass-pill" style="margin-bottom: 24px;">Mac Mini</span>
-      <h1 class="display-1">Repairs to the Mac Mini.</h1>
-      <p class="lead">Diagnostic, repair and upgrade for every Mac Mini generation.</p>
-      <div class="ctas">
-        <a href="tel:01253445032" class="btn btn-primary">Call 01253 445032</a>
-        <a href="/contact-us/" class="btn btn-secondary">Get a quote</a>
-      </div>
-    </div>
-  </section>
+  <PageHero
+    eyebrow="Mac Mini"
+    title="Repairs to the Mac Mini."
+    lead="Diagnostic, repair and upgrade for every Mac Mini generation."
+    ctas={[
+      { href: SITE_INFO.phone.landline.href, label: `Call ${SITE_INFO.phone.landline.display}`, variant: 'primary' },
+      { href: '/contact-us/', label: 'Get a quote', variant: 'secondary' }
+    ]}
+  />
 
   <section class="content-section">
     <div class="container">
       <h2 class="display-2">Common Mac Mini repairs.</h2>
       <p>Mac Mini machines are compact, well-engineered, and very serviceable when something goes wrong. We diagnose faults across the full range, from the early Intel-based models to the current Apple silicon M-series.</p>
 
-      <div class="service-grid">
-        <div class="service-card">
-          <h3>Storage upgrades</h3>
-          <p>HDD to SSD upgrades on older models. Often the single biggest performance lift you can give a Mac Mini.</p>
-        </div>
-        <div class="service-card">
-          <h3>RAM upgrades</h3>
-          <p>Where the model supports user-serviceable memory, we install and configure to suit your workload.</p>
-        </div>
-        <div class="service-card">
-          <h3>Boot and OS issues</h3>
-          <p>Won't boot, kernel panics, recovery mode failures. We get the system back into a working state and verify with a clean macOS reinstall if needed.</p>
-        </div>
-        <div class="service-card">
-          <h3>Logic board faults</h3>
-          <p>Component-level diagnosis on older boards. We're honest if it's beyond economical repair.</p>
-        </div>
-        <div class="service-card">
-          <h3>Cooling and thermal</h3>
-          <p>Fan replacement, thermal paste refresh, dust and debris clean. Common on Mac Minis used as home servers or media boxes.</p>
-        </div>
-        <div class="service-card">
-          <h3>Diagnostic</h3>
-          <p>£75 diagnostic fee if you're unsure what's wrong. Deducted from the repair cost if you go ahead.</p>
-        </div>
-      </div>
+      <ServiceGrid category="mac-mini" />
     </div>
   </section>
 
-  <section class="cta-band">
-    <div class="container">
-      <h2 class="display-2">Need a Mac Mini sorted?</h2>
-      <p class="lead">Drop it in or arrange an onsite visit. Most jobs back within 24 to 48 hours.</p>
-      <div class="ctas">
-        <a href="tel:01253445032" class="btn btn-primary">Call 01253 445032</a>
-        <a href="/contact-us/" class="btn btn-secondary">Get in touch</a>
-      </div>
-    </div>
-  </section>
+  <CtaBand
+    title="Need a Mac Mini sorted?"
+    lead="Drop it in or arrange an onsite visit. Most jobs back within 24 to 48 hours."
+    ctas={[
+      { href: SITE_INFO.phone.landline.href, label: `Call ${SITE_INFO.phone.landline.display}`, variant: 'primary' },
+      { href: '/contact-us/', label: 'Get in touch', variant: 'secondary' }
+    ]}
+  />
 
 </Base>

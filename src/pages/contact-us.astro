@@ -1,52 +1,53 @@
 ---
 import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import { SITE_INFO } from '../data/site.ts';
 
-const title = 'Contact Apple Repairs Blackpool';
-const description = 'Get in touch with Apple Repairs Blackpool. Phone 01253 445032 or 07873 170729. Independent Apple specialists serving the Fylde Coast and Lancashire.';
+const title = `Contact ${SITE_INFO.name}`;
+const description = `Get in touch with ${SITE_INFO.name}. Phone ${SITE_INFO.phone.landline.display} or ${SITE_INFO.phone.mobile.display}. Independent Apple specialists serving the Fylde Coast and Lancashire.`;
+
+const areaNames = SITE_INFO.serviceAreas.map(a => a.name).join(', ');
 ---
 
 <Base title={title} description={description}>
 
-  <section class="page-hero mesh-bg">
-    <div class="container">
-      <span class="glass-pill" style="margin-bottom: 24px;">Contact</span>
-      <h1 class="display-1">Get in touch.</h1>
-      <p class="lead">Phone, email, or send the form below. We aim to respond within 24 hours.</p>
-    </div>
-  </section>
+  <PageHero
+    eyebrow="Contact"
+    title="Get in touch."
+    lead="Phone, email, or send the form below. We aim to respond within 24 hours."
+  />
 
   <section class="content-section">
     <div class="container">
       <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start;">
 
         <div>
-          <h2 class="display-3" style="margin-bottom: 18px;">Apple Repairs Blackpool</h2>
-          <p style="margin-bottom: 24px;">Independent Apple specialists serving Blackpool, Cleveleys, Lytham, Fleetwood, Poulton, Kirkham, Preston, Lancaster, Morecambe and Blackburn.</p>
+          <h2 class="display-3" style="margin-bottom: 18px;">{SITE_INFO.name}</h2>
+          <p style="margin-bottom: 24px;">Independent Apple specialists serving {areaNames}.</p>
 
           <h3 style="margin-top: 0;">Phone</h3>
           <p>
-            <a href="tel:01253445032" style="font-size: 19px; font-weight: 600;">01253 445032</a><br />
-            <a href="tel:07873170729" style="font-size: 19px; font-weight: 600;">07873 170729</a>
+            <a href={SITE_INFO.phone.landline.href} style="font-size: 19px; font-weight: 600;">{SITE_INFO.phone.landline.display}</a><br />
+            <a href={SITE_INFO.phone.mobile.href} style="font-size: 19px; font-weight: 600;">{SITE_INFO.phone.mobile.display}</a>
           </p>
 
           <h3>Email</h3>
-          <p><a href="mailto:contact@applerepairsblackpool.co.uk">contact@applerepairsblackpool.co.uk</a></p>
+          <p><a href={`mailto:${SITE_INFO.email}`}>{SITE_INFO.email}</a></p>
 
           <h3>Studio</h3>
-          <p>Cleveleys, FY5 1RY<br />Lancashire, United Kingdom</p>
+          <p>{SITE_INFO.address.locality}, {SITE_INFO.address.postcode}<br />{SITE_INFO.address.region}, United Kingdom</p>
 
           <h3>Hours</h3>
-          <p>Monday to Friday: 9am to 5pm<br />Saturday: by appointment<br />Sunday: closed</p>
+          <p>Monday to Friday: {SITE_INFO.hours.weekday}<br />Saturday: {SITE_INFO.hours.saturday}<br />Sunday: {SITE_INFO.hours.sunday}</p>
 
           <h3>Diagnostic fee</h3>
-          <p>£75 diagnostic if we can't tell you what's wrong over the phone. Deducted from any repair cost.</p>
+          <p>{SITE_INFO.diagnosticFee} diagnostic if we can't tell you what's wrong over the phone. Deducted from any repair cost.</p>
         </div>
 
         <div>
           <h2 class="display-3" style="margin-bottom: 18px;">Send a message.</h2>
           <p>The fastest way to get a quote. We'll come back to you within 24 hours.</p>
 
-          <!-- Netlify Forms: data-netlify="true" + hidden form-name tells Netlify to capture submissions. -->
           <form
             name="contact"
             method="POST"

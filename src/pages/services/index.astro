@@ -1,0 +1,60 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { getCollection } from 'astro:content';
+import { SITE_INFO } from '../../data/site.ts';
+
+const title = `Services | ${SITE_INFO.name}`;
+const description = `Apple repair services in Blackpool: MacBook screen, battery, keyboard, fan; iMac display, GPU, PSU; Mac Mini; storage upgrades, data recovery, liquid damage, onsite support.`;
+
+const standaloneServices = (await getCollection('services'))
+  .filter(s => s.data.standalone)
+  .sort((a, b) => a.data.order - b.data.order);
+---
+
+<Base title={title} description={description}>
+
+  <PageHero
+    eyebrow="Services"
+    title="Apple repair services we offer."
+    lead="Most common repairs have their own dedicated page below. Anything else, call and ask."
+    ctas={[
+      { href: SITE_INFO.phone.landline.href, label: `Call ${SITE_INFO.phone.landline.display}`, variant: 'primary' },
+      { href: '/pricing/', label: 'Full pricing list', variant: 'secondary' }
+    ]}
+  />
+
+  <section class="content-section">
+    <div class="container">
+      <div class="service-grid">
+        {standaloneServices.map(service => (
+          <a href={`/services/${service.slug}/`} class="service-card" style="text-decoration: none; color: inherit;">
+            <h3>{service.data.title}</h3>
+            <p>{service.data.description}</p>
+            {service.data.priceFrom && (
+              <p style="margin-top: 8px; font-size: 14px;">
+                <strong style="color: var(--ink);">From {service.data.priceFrom}</strong>
+              </p>
+            )}
+          </a>
+        ))}
+      </div>
+
+      <p style="margin-top: 36px; padding: 18px 22px; background: var(--bg-grey); border-radius: 14px;">
+        These are the services with their own dedicated landing pages. For the full list of repairs across iMac, MacBook, Mac Mini, storage, and onsite support, see the
+        <a href="/imac-repair-upgrades/">iMac</a>, <a href="/macbook-all-models-repairs-upgrades/">MacBook</a>, <a href="/mac-mini/">Mac Mini</a>, <a href="/storage/">Storage</a>, and <a href="/apple-support/">Support</a> pages, or the <a href="/pricing/">Pricing</a> page for everything in one table.
+      </p>
+    </div>
+  </section>
+
+  <CtaBand
+    title="Not sure which service you need?"
+    lead="Call us. We'll talk you through it on the phone before you commit to anything."
+    ctas={[
+      { href: SITE_INFO.phone.landline.href, label: `Call ${SITE_INFO.phone.landline.display}`, variant: 'primary' },
+      { href: '/contact-us/', label: 'Get in touch', variant: 'secondary' }
+    ]}
+  />
+
+</Base>

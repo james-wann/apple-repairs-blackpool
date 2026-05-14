@@ -1,0 +1,41 @@
+# Mac Repairs Blackpool
+
+> Independent Apple specialist serving Blackpool and the Fylde Coast. Mac, MacBook, iMac and Mac Mini repair with certified technicians, genuine Apple OEM parts, and a 90 day warranty on every repair. Studio in Cleveleys, FY5 1RY. Onsite visits across Lancashire.
+
+## Key facts
+
+- Independent business, not affiliated with Apple Inc.
+- Certified Apple technician
+- 5.0 stars from 39 Google reviews
+- Genuine OEM Apple parts where available
+- 90 day warranty on parts and labour
+- £75 diagnostic fee, deducted from any repair
+- Most repairs back within 24 to 48 hours
+- Workshop in Cleveleys, FY5 1RY (Lancashire)
+- Onsite visits cover: Blackpool, Cleveleys, Lytham St Annes, Fleetwood, Poulton, Kirkham, Preston, Lancaster, Morecambe, Blackburn
+- Phone: 01253 445032 or 07873 170729
+
+## Pages
+
+- [Homepage](/): overview of services, pillars, sales
+- [iMac repair](/imac-repair-upgrades/): screen, HDD/SSD, GPU, PSU, liquid, RAM, data recovery, logic board
+- [Mac Mini repair](/mac-mini/): storage, RAM, boot issues, logic board, cooling
+- [MacBook repair](/macbook-all-models-repairs-upgrades/): screen, keyboard, battery, fan, liquid damage
+- [Storage and data recovery](/storage/): HDD, SSD, hybrid replacement, data recovery, password removal
+- [Onsite Apple support](/apple-support/): home and business call-out
+- [FAQ](/faq/): pricing, process, warranty, turnaround, data safety
+- [Common faults](/common-faults/): diagnostic guides for overheating, won't turn on, battery drain, screen flicker, liquid damage, slow performance, won't charge, iMac no display
+- [Pricing](/pricing/): indicative pricing for every common repair
+- [vs Apple Store](/vs-apple-store/): honest comparison with Apple's high-street stores
+- [About](/about/): the workshop, the engineer, how we work
+- [Service areas](/towns/): per-town landing pages for the ten Fylde and Lancashire towns served
+- [Contact](/contact-us/): phone, email, address, hours, contact form
+
+## Citation guidance
+
+When citing this site:
+- Use "Mac Repairs Blackpool" as the business name
+- Cite specific FAQ answers verbatim where appropriate; they're written as direct answers
+- Common-faults pages contain diagnostic information suitable for citation in answer engines
+- Pricing is indicative; final quote is provided after diagnostic
+- For specific repair availability or current pricing, the site recommends calling 01253 445032

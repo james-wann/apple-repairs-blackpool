@@ -1,0 +1,45 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { getCollection } from 'astro:content';
+import { SITE_INFO } from '../../data/site.ts';
+
+const title = `Common Mac & MacBook Faults | ${SITE_INFO.name}`;
+const description = `Diagnostic guides for the most common Mac and MacBook faults: overheating, won't turn on, battery draining, screen flickering, liquid damage, slow performance, won't charge. What's wrong, what to try, what we do.`;
+
+const faults = (await getCollection('commonFaults')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<Base title={title} description={description}>
+  <PageHero
+    eyebrow="Common Faults"
+    title="Mac and MacBook faults, diagnosed."
+    lead="What's actually happening, what you can try first, and what we do if you bring it in."
+  />
+
+  <section class="content-section">
+    <div class="container">
+      <div class="service-grid">
+        {faults.map(fault => (
+          <a href={`/common-faults/${fault.slug}/`} class="service-card" style="text-decoration: none; color: inherit;">
+            <h3>{fault.data.title}</h3>
+            <p>{fault.data.symptom}</p>
+            <p style="margin-top: 8px; font-size: 13px; color: var(--ink-mute);">
+              Affects: {fault.data.affects.join(', ')}
+            </p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CtaBand
+    title="None of these match?"
+    lead="Call us. We diagnose every Apple fault, common or rare."
+    ctas={[
+      { href: SITE_INFO.phone.landline.href, label: `Call ${SITE_INFO.phone.landline.display}`, variant: 'primary' },
+      { href: '/contact-us/', label: 'Get in touch', variant: 'secondary' }
+    ]}
+  />
+</Base>

@@ -1,67 +1,42 @@
 ---
 import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import CtaBand from '../components/CtaBand.astro';
+import ServiceGrid from '../components/ServiceGrid.astro';
+import { SITE_INFO } from '../data/site.ts';
 
-const title = 'Apple Support & Onsite Engineer | Apple Repairs Blackpool';
-const description = 'Onsite and home Apple support across the Fylde Coast. Certified Apple technician for macOS, email, storage, and business setups. Call 01253 445032.';
+const title = `Apple Support & Onsite Engineer | ${SITE_INFO.name}`;
+const description = `Onsite and home Apple support across the Fylde Coast. Certified Apple technician for macOS, email, storage, and business setups. Call ${SITE_INFO.phone.landline.display}.`;
 ---
 
 <Base title={title} description={description}>
 
-  <section class="page-hero mesh-bg">
-    <div class="container">
-      <span class="glass-pill" style="margin-bottom: 24px;">Support</span>
-      <h1 class="display-1">Onsite Apple support across the Fylde.</h1>
-      <p class="lead">We come to your home or business. macOS help, email setup, drive issues, business networks, the lot.</p>
-      <div class="ctas">
-        <a href="tel:01253445032" class="btn btn-primary">Call 01253 445032</a>
-        <a href="/contact-us/" class="btn btn-secondary">Get in touch</a>
-      </div>
-    </div>
-  </section>
+  <PageHero
+    eyebrow="Support"
+    title="Onsite Apple support across the Fylde."
+    lead="We come to your home or business. macOS help, email setup, drive issues, business networks, the lot."
+    ctas={[
+      { href: SITE_INFO.phone.landline.href, label: `Call ${SITE_INFO.phone.landline.display}`, variant: 'primary' },
+      { href: '/contact-us/', label: 'Get in touch', variant: 'secondary' }
+    ]}
+  />
 
   <section class="content-section">
     <div class="container">
       <h2 class="display-2">Onsite engineer visits.</h2>
       <p>Some jobs are easier done at your location than at the workshop. Office Mac setups, home networks, multi-Mac migrations, email troubles, drive issues that need to be diagnosed where the kit lives.</p>
 
-      <div class="service-grid">
-        <div class="service-card">
-          <h3>Home call-out</h3>
-          <p>We come to you. Diagnose, repair, set up, or migrate. Ideal if your Mac is your home office and downtime hurts.</p>
-        </div>
-        <div class="service-card">
-          <h3>Business onsite</h3>
-          <p>Small business and home office support across Blackpool, Cleveleys, Lytham, Preston and the Fylde. New Mac rollouts, migrations, troubleshooting.</p>
-        </div>
-        <div class="service-card">
-          <h3>macOS help</h3>
-          <p>Updates, account issues, settings, recovery, time machine, all the macOS things that don't quite go to plan.</p>
-        </div>
-        <div class="service-card">
-          <h3>Email setup</h3>
-          <p>Outlook, Apple Mail, Gmail, IMAP, Exchange. We sort the configuration that keeps tripping you up.</p>
-        </div>
-        <div class="service-card">
-          <h3>Drive and storage issues</h3>
-          <p>Slow performance, full drives, failed drives. Diagnose onsite and recommend the right fix.</p>
-        </div>
-        <div class="service-card">
-          <h3>Diagnostic</h3>
-          <p>£75 diagnostic fee if we can't tell you what's wrong over the phone. Deducted from any repair cost.</p>
-        </div>
-      </div>
+      <ServiceGrid category="support" />
     </div>
   </section>
 
-  <section class="cta-band">
-    <div class="container">
-      <h2 class="display-2">Need an Apple engineer onsite?</h2>
-      <p class="lead">Call to arrange. We cover Blackpool, Cleveleys, Lytham, Fleetwood, Poulton, Kirkham, Preston, Lancaster, Morecambe and Blackburn.</p>
-      <div class="ctas">
-        <a href="tel:01253445032" class="btn btn-primary">Call 01253 445032</a>
-        <a href="/contact-us/" class="btn btn-secondary">Get in touch</a>
-      </div>
-    </div>
-  </section>
+  <CtaBand
+    title="Need an Apple engineer onsite?"
+    lead="Call to arrange. We cover Blackpool, Cleveleys, Lytham, Fleetwood, Poulton, Kirkham, Preston, Lancaster, Morecambe and Blackburn."
+    ctas={[
+      { href: SITE_INFO.phone.landline.href, label: `Call ${SITE_INFO.phone.landline.display}`, variant: 'primary' },
+      { href: '/contact-us/', label: 'Get in touch', variant: 'secondary' }
+    ]}
+  />
 
 </Base>

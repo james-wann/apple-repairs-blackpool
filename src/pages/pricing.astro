@@ -1,0 +1,120 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { SITE_INFO } from '../data/site.ts';
+
+const title = `Pricing | ${SITE_INFO.name}`;
+const description = `Indicative pricing for the most common Mac repairs in Blackpool. Diagnostic ${SITE_INFO.diagnosticFee}, deducted from any repair. Fixed written quote before work starts. 90 day warranty.`;
+
+const priceList = [
+  {
+    category: 'MacBook',
+    items: [
+      { service: 'Diagnostic',                        priceFrom: '£75' },
+      { service: 'Battery replacement (Air)',         priceFrom: '£129' },
+      { service: 'Battery replacement (Pro)',         priceFrom: '£159' },
+      { service: 'Screen replacement',                priceFrom: '£189' },
+      { service: 'Display cable replacement',         priceFrom: '£119' },
+      { service: 'Keyboard replacement',              priceFrom: '£199' },
+      { service: 'Fan replacement + thermal clean',   priceFrom: '£79' },
+      { service: 'Liquid damage diagnostic + clean',  priceFrom: '£89' },
+      { service: 'Logic board repair',                priceFrom: '£179' }
+    ]
+  },
+  {
+    category: 'iMac',
+    items: [
+      { service: 'Diagnostic',                        priceFrom: '£75' },
+      { service: 'Display cable replacement',         priceFrom: '£119' },
+      { service: 'Display panel replacement',         priceFrom: '£249' },
+      { service: 'HDD to SSD upgrade',                priceFrom: '£149' },
+      { service: 'RAM upgrade (where supported)',     priceFrom: '£79' },
+      { service: 'PSU replacement',                   priceFrom: '£139' },
+      { service: 'Logic board reflow / reball',       priceFrom: '£199' }
+    ]
+  },
+  {
+    category: 'Mac Mini',
+    items: [
+      { service: 'Diagnostic',                        priceFrom: '£75' },
+      { service: 'HDD to SSD upgrade',                priceFrom: '£149' },
+      { service: 'RAM upgrade (where supported)',     priceFrom: '£79' },
+      { service: 'Fan + thermal clean',               priceFrom: '£79' },
+      { service: 'Logic board repair',                priceFrom: '£179' }
+    ]
+  },
+  {
+    category: 'Storage & data',
+    items: [
+      { service: 'macOS reinstall + migration',       priceFrom: '£59' },
+      { service: 'SSD upgrade (any Mac)',             priceFrom: '£149' },
+      { service: 'Data recovery (intact drive)',      priceFrom: '£99' },
+      { service: 'Data recovery (failed drive)',      priceFrom: 'Quoted after diagnostic' },
+      { service: 'OS password removal',               priceFrom: '£79' }
+    ]
+  },
+  {
+    category: 'Onsite / Business',
+    items: [
+      { service: 'Home call-out (Fylde area)',        priceFrom: '£89 + repair' },
+      { service: 'Business onsite (per hour)',        priceFrom: '£75' },
+      { service: 'New Mac setup + migration',         priceFrom: '£89' },
+      { service: 'Business support retainer',         priceFrom: 'Quoted to team size' }
+    ]
+  }
+];
+---
+
+<Base title={title} description={description}>
+
+  <PageHero
+    eyebrow="Pricing"
+    title="Indicative prices, honest quotes."
+    lead="Diagnostic £75, deducted from any repair. Written fixed quote before work starts. 90 day warranty on every job."
+    ctas={[
+      { href: SITE_INFO.phone.landline.href, label: `Call ${SITE_INFO.phone.landline.display}`, variant: 'primary' },
+      { href: '/contact-us/', label: 'Get a quote', variant: 'secondary' }
+    ]}
+  />
+
+  <section class="content-section">
+    <div class="container">
+      <p style="padding: 18px 22px; background: var(--bg-grey); border-radius: 14px; border-left: 4px solid var(--blue); margin-bottom: 36px;">
+        Prices below are <strong>indicative starting points</strong>. The diagnostic fee covers a proper bench assessment when the fault isn't obvious from a phone description. We give you a written fixed quote covering parts, labour and turnaround before any repair work starts.
+      </p>
+
+      {priceList.map(section => (
+        <div style="margin-bottom: 48px;">
+          <h2 class="display-3" style="margin-bottom: 18px;">{section.category}</h2>
+          <table style="width: 100%; border-collapse: collapse;">
+            <tbody>
+              {section.items.map(row => (
+                <tr style="border-bottom: 1px solid var(--line);">
+                  <td style="padding: 14px 0; font-size: 16px;">{row.service}</td>
+                  <td style="padding: 14px 0; font-size: 16px; font-weight: 600; color: var(--ink); text-align: right; font-family: var(--font-display); letter-spacing: -0.01em;">
+                    {row.priceFrom.startsWith('£') ? <>From {row.priceFrom}</> : row.priceFrom}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      ))}
+
+      <p style="margin-top: 36px; color: var(--ink-soft);">
+        Don't see what you need? <a href={SITE_INFO.phone.landline.href}>Call us</a> — we'll either quote on the phone or get you in for diagnostic.
+      </p>
+    </div>
+  </section>
+
+  <CtaBand
+    title="Ready to book?"
+    lead="Workshop drop-off or onsite visit. Both available."
+    ctas={[
+      { href: SITE_INFO.phone.landline.href, label: `Call ${SITE_INFO.phone.landline.display}`, variant: 'primary' },
+      { href: '/contact-us/', label: 'Get in touch', variant: 'secondary' }
+    ]}
+  />
+
+</Base>

@@ -1,0 +1,72 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { getCollection, type CollectionEntry } from 'astro:content';
+import { SITE_INFO } from '../../data/site.ts';
+
+export async function getStaticPaths() {
+  const faults = await getCollection('commonFaults');
+  return faults.map((fault: CollectionEntry<'commonFaults'>) => ({
+    params: { slug: fault.slug },
+    props: { fault }
+  }));
+}
+
+const { fault } = Astro.props;
+const { Content } = await fault.render();
+
+const title = `${fault.data.title} | ${SITE_INFO.name}`;
+const description = fault.data.summary;
+
+// Article schema for citation-worthy long-form diagnostic content.
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: fault.data.title,
+  description: fault.data.summary,
+  about: fault.data.affects,
+  author: {
+    '@type': 'Organization',
+    name: SITE_INFO.name,
+    url: SITE_INFO.url
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: SITE_INFO.name,
+    url: SITE_INFO.url
+  }
+};
+---
+
+<Base title={title} description={description}>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(articleSchema)} />
+
+  <PageHero
+    eyebrow={`Common fault · ${fault.data.affects.join(', ')}`}
+    title={fault.data.title}
+    lead={fault.data.symptom}
+    ctas={[
+      { href: SITE_INFO.phone.landline.href, label: `Call ${SITE_INFO.phone.landline.display}`, variant: 'primary' },
+      { href: '/contact-us/', label: 'Get a quote', variant: 'secondary' }
+    ]}
+  />
+
+  <section class="content-section">
+    <div class="container">
+      <p style="font-size: 19px; line-height: 1.5; padding: 24px; background: var(--bg-grey); border-radius: 16px; border-left: 4px solid var(--blue); margin-bottom: 36px;">
+        <strong>In short:</strong> {fault.data.summary}
+      </p>
+      <Content />
+    </div>
+  </section>
+
+  <CtaBand
+    title="Sound like your Mac?"
+    lead="Bring it in or call. We diagnose at workshop or onsite, with an honest assessment before any work starts."
+    ctas={[
+      { href: SITE_INFO.phone.landline.href, label: `Call ${SITE_INFO.phone.landline.display}`, variant: 'primary' },
+      { href: '/contact-us/', label: 'Get in touch', variant: 'secondary' }
+    ]}
+  />
+</Base>

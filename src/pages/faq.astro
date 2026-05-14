@@ -1,0 +1,82 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { getCollection } from 'astro:content';
+import { SITE_INFO } from '../data/site.ts';
+
+const title = `FAQ | ${SITE_INFO.name}`;
+const description = `Frequently asked questions about Mac and Apple repair in Blackpool. Pricing, process, warranty, turnaround times, data safety, business support.`;
+
+const allFaqs = (await getCollection('faqs')).sort((a, b) => a.data.order - b.data.order);
+
+const categories = [
+  { key: 'general',       label: 'General' },
+  { key: 'pricing',       label: 'Pricing' },
+  { key: 'process',       label: 'Process' },
+  { key: 'macbook',       label: 'MacBook' },
+  { key: 'imac',          label: 'iMac' },
+  { key: 'data-recovery', label: 'Data recovery' },
+  { key: 'business',      label: 'Business' }
+] as const;
+
+const groupedFaqs = categories.map(cat => ({
+  ...cat,
+  items: allFaqs.filter(f => f.data.category === cat.key)
+}));
+
+// FAQPage schema — the single biggest AEO move on the site.
+// LLMs (ChatGPT, Perplexity, Claude) cite content with FAQ schema heavily.
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: allFaqs.map(faq => ({
+    '@type': 'Question',
+    name: faq.data.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: faq.data.answer
+    }
+  }))
+};
+---
+
+<Base title={title} description={description}>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(faqSchema)} />
+
+  <PageHero
+    eyebrow="FAQ"
+    title="Mac repair, answered."
+    lead="Direct answers to the questions we get asked most."
+  />
+
+  <section class="content-section">
+    <div class="container">
+      {groupedFaqs.map(group => (
+        group.items.length > 0 && (
+          <div style="margin-bottom: 56px;">
+            <h2 class="display-3" style="margin-bottom: 20px;">{group.label}</h2>
+            {group.items.map(faq => (
+              <details style="padding: 20px 0; border-bottom: 1px solid var(--line);">
+                <summary style="font-family: var(--font-display); font-size: 19px; font-weight: 600; cursor: pointer; color: var(--ink); list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 16px;">
+                  {faq.data.question}
+                  <span style="color: var(--blue); font-size: 28px; line-height: 1;" aria-hidden="true">+</span>
+                </summary>
+                <p style="margin-top: 12px; color: var(--ink-soft); line-height: 1.6;">{faq.data.answer}</p>
+              </details>
+            ))}
+          </div>
+        )
+      ))}
+    </div>
+  </section>
+
+  <CtaBand
+    title="Question we haven't answered?"
+    lead="Pick up the phone, we don't bite. Diagnostic is £75, deducted from any repair you go ahead with."
+    ctas={[
+      { href: SITE_INFO.phone.landline.href, label: `Call ${SITE_INFO.phone.landline.display}`, variant: 'primary' },
+      { href: '/contact-us/', label: 'Get in touch', variant: 'secondary' }
+    ]}
+  />
+</Base>

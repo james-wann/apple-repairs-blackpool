@@ -1,0 +1,57 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { getCollection, type CollectionEntry } from 'astro:content';
+import { SITE_INFO } from '../../data/site.ts';
+
+export async function getStaticPaths() {
+  const towns = await getCollection('towns');
+  return towns.map((town: CollectionEntry<'towns'>) => ({
+    params: { slug: town.slug },
+    props: { town }
+  }));
+}
+
+const { town } = Astro.props;
+const { Content } = await town.render();
+
+const title = `Apple Repair in ${town.data.name} | ${SITE_INFO.name}`;
+const description = `Independent Apple specialist serving ${town.data.name}. ${town.data.summary}`;
+---
+
+<Base title={title} description={description}>
+
+  <PageHero
+    eyebrow={`Service area · ${town.data.postcode}`}
+    title={`Apple Repair in ${town.data.name}.`}
+    lead={town.data.summary}
+    ctas={[
+      { href: SITE_INFO.phone.landline.href, label: `Call ${SITE_INFO.phone.landline.display}`, variant: 'primary' },
+      { href: '/contact-us/', label: 'Get a quote', variant: 'secondary' }
+    ]}
+  />
+
+  <section class="content-section">
+    <div class="container">
+      <h2 class="display-2">Servicing {town.data.name}.</h2>
+      <p><strong>{town.data.distance}.</strong></p>
+      <Content />
+      <p style="margin-top: 20px;">
+        We're certified Apple technicians, work exclusively on Apple kit, and back every repair with a 90 day warranty
+        on parts and labour. Diagnostic fee {SITE_INFO.diagnosticFee} if we can't tell you the fault over the phone,
+        deducted from any subsequent repair.
+      </p>
+    </div>
+  </section>
+
+  <CtaBand
+    title={`Mac trouble in ${town.data.name}?`}
+    lead="Most repairs back with you in 24 to 48 hours. Workshop drop-off or onsite visit, your choice."
+    ctas={[
+      { href: SITE_INFO.phone.landline.href, label: `Call ${SITE_INFO.phone.landline.display}`, variant: 'primary' },
+      { href: '/contact-us/', label: 'Get in touch', variant: 'secondary' }
+    ]}
+  />
+
+</Base>

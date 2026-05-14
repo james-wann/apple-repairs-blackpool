@@ -1,0 +1,70 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { SITE_INFO } from '../data/site.ts';
+
+const title = `About | ${SITE_INFO.name}`;
+const description = `Mac Repairs Blackpool is run by a certified Apple technician working from a Cleveleys studio. Independent, Apple-only, genuine parts, 90 day warranty on every repair.`;
+
+// Person schema — E-E-A-T signal for the engineer's expertise.
+// John is a placeholder name; James to replace with brother-in-law's actual name and credentials.
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'John',
+  jobTitle: 'Certified Apple Technician',
+  worksFor: {
+    '@type': 'LocalBusiness',
+    '@id': `${SITE_INFO.url}/#business`
+  },
+  knowsAbout: [
+    'Apple Mac repair',
+    'MacBook repair',
+    'iMac repair',
+    'Mac Mini repair',
+    'macOS troubleshooting',
+    'Apple logic board component-level repair',
+    'Data recovery'
+  ]
+};
+---
+
+<Base title={title} description={description}>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(personSchema)} />
+
+  <PageHero
+    eyebrow="About"
+    title="Apple-only. Certified. Independent."
+    lead="Mac Repairs Blackpool is a one-engineer Apple repair workshop, operating from Cleveleys on the Fylde Coast."
+  />
+
+  <section class="content-section">
+    <div class="container">
+      <h2 class="display-2">The workshop</h2>
+      <p>The studio is in Cleveleys (FY5 1RY), a short drive from Blackpool. Customers across the Fylde Coast and Lancashire bring their Macs in for repair, or arrange onsite visits when bringing the kit to us isn't practical.</p>
+      <p>We only work on Apple kit: iMac, MacBook Air, MacBook Pro, Mac Mini, Mac Pro. We don't do Windows PCs, and we don't take on phone work that distracts from doing Mac repair properly.</p>
+
+      <h2 class="display-2" style="margin-top: 48px;">The engineer</h2>
+      <p>John is a certified Apple technician with experience across the Intel and Apple silicon Mac generations. Component-level board repair, data recovery, screen and keyboard work across every MacBook and iMac model from the 2000s through current.</p>
+      <p>The bench has the diagnostic tools to do the job properly: oscilloscope and multimeter, microscope, hot-air station, ultrasonic cleaner for liquid-damage jobs, and the calibration kit needed for battery and display replacements on modern Apple silicon machines.</p>
+
+      <h2 class="display-2" style="margin-top: 48px;">How we work</h2>
+      <p>You bring it in or call us out. We diagnose (the £75 fee covers properly opening the machine if the fault isn't obvious, and is deducted from any repair you go ahead with). We give a written quote with parts, labour and turnaround. No work starts until you've approved it.</p>
+      <p>Most repairs are back with you in 24 to 48 hours. We use genuine Apple parts where they're available, and we back every repair with a 90 day warranty on parts and labour.</p>
+
+      <h2 class="display-2" style="margin-top: 48px;">What we don't do</h2>
+      <p>We don't fit aftermarket parts that compromise reliability. We don't take on jobs where it's beyond economical repair without telling you that upfront. We don't surprise you with extra costs mid-job.</p>
+      <p>For some specialist repairs (severe water damage caught very late, certain very old iMac panels) we'll be honest about the odds before you commit. For business customers, we won't oversell support contracts you don't need.</p>
+    </div>
+  </section>
+
+  <CtaBand
+    title="Want to talk to the engineer?"
+    lead="Call directly. We don't have a call centre; you'll be speaking to John."
+    ctas={[
+      { href: SITE_INFO.phone.landline.href, label: `Call ${SITE_INFO.phone.landline.display}`, variant: 'primary' },
+      { href: '/contact-us/', label: 'Get in touch', variant: 'secondary' }
+    ]}
+  />
+</Base>

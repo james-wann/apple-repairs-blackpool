@@ -1,21 +1,28 @@
 ---
 import Base from '../layouts/Base.astro';
+import PillarTile from '../components/PillarTile.astro';
+import { SITE_INFO } from '../data/site.ts';
 
-const title = 'Apple Repairs Blackpool | Independent Apple Specialists with OEM Parts';
-const description = 'Independent Apple specialists in Blackpool. Certified Apple technicians, 100% genuine Apple parts, onsite repairs across the Fylde Coast. Call 01253 445032.';
+const title = `${SITE_INFO.name} | Independent Apple Specialists with OEM Parts`;
+const description = `Independent Apple specialists in Blackpool. Certified Apple technicians, 100% genuine Apple parts, onsite repairs across the Fylde Coast. Call ${SITE_INFO.phone.landline.display}.`;
 ---
 
 <Base title={title} description={description}>
 
-  <!-- HERO -->
+  <!-- HERO — homepage-only treatment with product imagery -->
   <section class="page-hero mesh-bg">
     <div class="container">
-      <span class="glass-pill" style="margin-bottom: 24px;"><span class="dot"></span> Apple Specialists. Open today.</span>
+      <span class="glass-pill" style="margin-bottom: 18px;"><span class="dot"></span> Apple Specialists. Open today.</span>
       <h1 class="display-xl">Apple Repairs.</h1>
       <p class="lead">Independent. Local. Certified.</p>
+      <p style="display: inline-flex; align-items: center; gap: 8px; margin-top: 8px; margin-bottom: 24px; font-size: 15px; color: var(--ink);">
+        <span style="color: #f4a032; letter-spacing: 2px; font-size: 17px;">★★★★★</span>
+        <strong>{SITE_INFO.reviews.rating.toFixed(1)}</strong>
+        <span style="color: var(--ink-soft);">from {SITE_INFO.reviews.count} Google reviews</span>
+      </p>
       <div class="ctas">
-        <a href="tel:01253445032" class="btn btn-primary">Call 01253 445032</a>
-        <a href="tel:07873170729" class="btn btn-secondary">Call 07873 170729</a>
+        <a href={SITE_INFO.phone.landline.href} class="btn btn-primary">Call {SITE_INFO.phone.landline.display}</a>
+        <a href={SITE_INFO.phone.mobile.href} class="btn btn-secondary">Call {SITE_INFO.phone.mobile.display}</a>
       </div>
     </div>
     <div style="max-width: 1200px; margin: 64px auto 0; padding: 0 22px; position: relative; z-index: 2;">
@@ -37,46 +44,41 @@ const description = 'Independent Apple specialists in Blackpool. Certified Apple
     </div>
   </section>
 
-  <!-- THREE PILLARS — Apple-style tiles: text top, photo bottom -->
+  <!-- THREE PILLARS — PillarTile components -->
   <section class="section-light">
     <div class="grid-3">
 
-      <div class="tile">
-        <div class="tile-content">
-          <span class="label">Apple Specialists</span>
-          <h3>Qualified Apple Engineer.</h3>
-          <p class="sub">We are Apple specialists.</p>
-          <div class="tile-ctas">
-            <a href="/apple-support/" class="arrow-link">We Only Deal With Apple</a>
-          </div>
-        </div>
-        <div class="tile-photo" style="background-image: url('https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=1200&q=85&auto=format&fit=crop');"></div>
-      </div>
+      <PillarTile
+        label="Apple Specialists"
+        title="Qualified Apple Engineer."
+        subtitle="We are Apple specialists."
+        photoUrl="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=1200&q=85&auto=format&fit=crop"
+        ctas={[
+          { href: '/apple-support/', label: 'We Only Deal With Apple', variant: 'arrow' }
+        ]}
+      />
 
-      <div class="tile dark">
-        <div class="tile-content">
-          <span class="label">OEM Parts</span>
-          <h3>100% Genuine Apple Parts.</h3>
-          <p class="sub">90 Days Warranty on Parts and Labour.</p>
-          <div class="tile-ctas">
-            <a href="/apple-support/" class="arrow-link">Get Your Mac back between 24 and 48 hours</a>
-          </div>
-        </div>
-        <div class="tile-photo" style="background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&q=85&auto=format&fit=crop');"></div>
-      </div>
+      <PillarTile
+        label="OEM Parts"
+        title="100% Genuine Apple Parts."
+        subtitle="90 Days Warranty on Parts and Labour."
+        photoUrl="https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&q=85&auto=format&fit=crop"
+        variant="dark"
+        ctas={[
+          { href: '/apple-support/', label: 'Get Your Mac back between 24 and 48 hours', variant: 'arrow' }
+        ]}
+      />
 
-      <div class="tile">
-        <div class="tile-content">
-          <span class="label">On The Fylde Coast</span>
-          <h3>Onsite Repairs.</h3>
-          <p class="sub">We Do Business Onsite Repairs.</p>
-          <div class="tile-ctas">
-            <a href="tel:01253445032" class="btn btn-primary">Call 01253 445032</a>
-            <a href="tel:01253445032" class="arrow-link">Call To Arrange</a>
-          </div>
-        </div>
-        <div class="tile-photo" style="background-image: url('https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=1200&q=85&auto=format&fit=crop');"></div>
-      </div>
+      <PillarTile
+        label="On The Fylde Coast"
+        title="Onsite Repairs."
+        subtitle="We Do Business Onsite Repairs."
+        photoUrl="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=1200&q=85&auto=format&fit=crop"
+        ctas={[
+          { href: SITE_INFO.phone.landline.href, label: `Call ${SITE_INFO.phone.landline.display}`, variant: 'primary' },
+          { href: SITE_INFO.phone.landline.href, label: 'Call To Arrange', variant: 'arrow' }
+        ]}
+      />
 
     </div>
   </section>
@@ -98,11 +100,11 @@ const description = 'Independent Apple specialists in Blackpool. Certified Apple
       <div class="copy">
         <span class="eyebrow">Apple Computer Sales</span>
         <h2 class="display-2">New and used iMacs and MacBooks.</h2>
-        <p>Apple Repairs Blackpool Sell New, Used and Refurbished Apple Computers, we spec up the computers to your choice and budget.</p>
+        <p>We sell new, used and refurbished Apple computers, spec'd up to your choice and budget.</p>
         <p>The New Macs come with 12 months Apple Care and sealed Box. We also add a 90 day warranty with our used Macs.</p>
         <p>Trade-ins are possible depending on year and condition.</p>
         <div class="ctas">
-          <a href="tel:01253445032" class="btn btn-primary">Call to discuss</a>
+          <a href={SITE_INFO.phone.landline.href} class="btn btn-primary">Call to discuss</a>
           <a href="/contact-us/" class="arrow-link">Contact us</a>
         </div>
       </div>
@@ -111,7 +113,7 @@ const description = 'Independent Apple specialists in Blackpool. Certified Apple
         style="background-image: linear-gradient(180deg, rgba(245,245,247,0) 60%, rgba(245,245,247,0.4) 100%), url('https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=1200&q=85&auto=format&fit=crop');"
       >
         <div class="glass-card">
-          <div class="title">Apple Repairs Blackpool</div>
+          <div class="title">{SITE_INFO.name}</div>
           <div class="text">New Apple Computers with Full Apple Care Warranty</div>
         </div>
       </div>
